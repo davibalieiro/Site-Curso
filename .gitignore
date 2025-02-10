@@ -1,0 +1,6 @@
+venv
+tasks.md
+*.cache
+.venv
+
+node_modules
