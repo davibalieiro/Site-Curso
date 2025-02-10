@@ -1,0 +1,278 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos do corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F7F7;
+    color: #021B33;
+}
+
+/* Estilos do cabeçalho */
+header {
+    background-color: #021B33;
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-left: 10px;
+}
+
+header .logo img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    filter: brightness(0) invert(1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #A9CFE5;
+}
+
+/* Estilos da barra de pesquisa */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+    width: 400px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    border: none;
+    background-color: #12577B;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #A9CFE5;
+}
+
+/* Estilos do rodapé */
+footer {
+    background-color: #021B33;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer .footer-links a:hover {
+    color: #A9CFE5;
+}
+
+/* Estilos do chat de suporte */
+.chat-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #12577B;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.chat-button:hover {
+    background-color: #A9CFE5;
+}
+
+/* Estilos da janela de chat */
+.chat-window {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.chat-header {
+    background-color: #12577B;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    position: relative;
+}
+
+.chat-header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.chat-messages {
+    height: 300px;
+    overflow-y: scroll;
+    margin: 10px 0;
+    padding-right: 10px;
+}
+
+.chat-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-input input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+.chat-input button {
+    background-color: #12577B;
+    color: white;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-input button :hover {
+    background-color: #A9CFE5;
+}
+
+.message {
+    padding: 8px;
+    margin: 5px 0;
+}
+
+.user-message {
+    background-color: #A9CFE5;
+    color: white;
+    text-align: right;
+    border-radius: 10px;
+}
+
+.bot-message {
+    background-color: #E5E5E5;
+    color: #333;
+    text-align: left;
+    border-radius: 10px;
+}
+
+/* Estilos do modal de categorias */
+.category-modal {
+    display: none;
+    position: fixed;
+    top: 80px; /* Ajuste a posição para estar mais próxima do botão de categorias */
+    left: 880px; /* Ajuste a posição para estar mais próxima do botão de categorias */
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    color: #021B33;
+}
+
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-content ul li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #021B33;
+    cursor: pointer;
+}
+
+.modal-content ul li:hover {
+    color: #12577B;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilos da seção de informações da conta */
+.account-info {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.account-info h2 {
+    color: #021B33;
+    margin-bottom: 15px;
+}
+
+.account-info p {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+}

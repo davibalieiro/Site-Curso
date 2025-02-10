@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Register Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <span class="rotate-bg"></span>
+        <span class="rotate-bg2"></span>
+        <div class="form-box login">
+            <h2 class="title animation" style="--i:0; --j:21">Login</h2>
+            <form id="loginForm">
+                <div class="input-box animation" style="--i:1; --j:22">
+                    <input type="text" id="loginUsername" required>
+                    <label for="loginUsername">Username</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--i:2; --j:23">
+                    <input type="password" id="loginPassword" required>
+                    <label for="loginPassword">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn animation" style="--i:3; --j:24">Login</button>
+                <div class="linkTxt animation" style="--i:5; --j:25">
+                    <p>Não tem uma conta? <span class="register-link btn-link">Cadastre-se</span></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-text login">
+            <h2 class="animation" style="--i:0; --j:20">Seja bem-vindo!</h2>
+            <p class="animation" style="--i:1; --j:21">Crie sua conta e explore novas oportunidades de aprendizado.
+                <br>O primeiro passo para o seu sucesso começa aqui!
+            </p>
+        </div>
+        <div class="form-box register">
+            <h2 class="title animation" style="--i:17; --j:0">Cadastre-se</h2>
+            <form id="registerForm">
+                <div class="input-box animation" style="--i:18; --j:1">
+                    <input type="text" id="registerUsername" required>
+                    <label for="registerUsername">Username</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--i:19; --j:2">
+                    <input type="email" id="registerEmail" required>
+                    <label for="registerEmail">Email</label>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-box animation" style="--i:20; --j:3">
+                    <input type="password" id="registerPassword" required>
+                    <label for="registerPassword">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn animation" style="--i:21;--j:4">Cadastre-se</button>
+                <div class="linkTxt animation" style="--i:22; --j:5">
+                    <p>Já tem uma conta? <a href="#" class="login-link btn-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-text register">
+            <h2 class="animation" style="--i:17; --j:0;">Seja bem-vindo!</h2>
+            <p class="animation" style="--i:18; --j:1;">Cadastre-se e tenha acesso a conteúdos exclusivos. Comece sua
+                jornada de aprendizado hoje mesmo!</p>
+        </div>
+    </div>
+
+    <!-- Área para exibir mensagens -->
+    <div id="message" class="message"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

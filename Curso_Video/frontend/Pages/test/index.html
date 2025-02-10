@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Cursos - Inspirado na Udemy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">
+      <img src="./img/logo.png" alt="Ícone da Plataforma">
+    </div>
+    <h1>Plataforma de Cursos</h1>
+    <nav class="navbar">
+      <a href="#">Início</a>
+      <a href="#" id="categoriesBtn">Categorias</a>
+      <a href="#">Cursos</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Entrar</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar cursos...">
+      <button>Pesquisar</button>
+    </div>
+  </header>
+
+  <!-- Banner Rotativo -->
+  <div class="carousel-container">
+    <div class="carousel">
+        <img src="./img/banner1.jpg" alt="Banner 1">
+        <img src="./img/banner2.jpg" alt="Banner 2">
+        <img src="./img/banner3.jpg" alt="Banner 3">
+    </div>
+    <button class="prev" onclick="prevImage()">&#10094;</button>
+    <button class="next" onclick="nextImage()">&#10095;</button>
+  </div>
+
+  <!-- Sessão de Cursos -->
+  <section class="courses-section">
+    <div class="course-card">
+      <img src="./img/html-css.jpg" alt="Curso de HTML e CSS">
+      <h3>Curso de HTML e CSS</h3>
+      <p>Aprenda a criar sites incríveis do zero.</p>
+      <p class="course-price">R$ 99,90</p>
+    </div>
+    <div class="course-card">
+      <img src="./img/javascript.jpg" alt="Curso de JavaScript">
+      <h3>Curso de JavaScript</h3>
+      <p>Desenvolva sites interativos.</p>
+      <p class="course-price">R$ 149,90</p>
+    </div>
+    <div class="course-card">
+      <img src="./img/react.jpg" alt="Curso de React">
+      <h3>Curso de React</h3>
+      <p>Construa interfaces modernas.</p>
+      <p class="course-price">R$ 199,90</p>
+    </div>
+    <div class="course-card">
+      <img src="./img/python.jpg" alt="Curso de Python">
+      <h3>Curso de Python</h3>
+      <p>Aprenda programação de forma simples.</p>
+      <p class="course-price">R$ 120,00</p>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">Sobre</a>
+      <a href="#">Suporte</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Privacidade</a>
+    </div>
+    <p>&copy; 2025 Plataforma de Cursos - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Modal de Categorias -->
+  <div class="category-modal" id="categoryModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeCategoriesModal()">✖</span>
+      <h3>Categorias de TI</h3>
+      <ul>
+        <li>Desenvolvimento Web</li>
+        <li>Inteligência Artificial</li>
+        <li>Ciência de Dados</li>
+        <li>Segurança da Informação</li>
+        <li>Banco de Dados</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Chat de Suporte -->
+  <div class="chat-button" onclick="openChat();">💬</div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <h4>Suporte ao Cliente</h4>
+      <button onclick="closeChat();">✖</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">Olá! Como posso ajudar você?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
