@@ -1,31 +1,31 @@
 let currentIndex = 0;
-   const images = document.querySelectorAll('.carousel img');
-   const totalImages = images.length;
-   const carousel = document.querySelector('.carousel');
+const images = document.querySelectorAll('.carousel img');
+const totalImages = images.length;
+const carousel = document.querySelector('.carousel');
 
-   let autoSlide = setInterval(nextImage, 5000);
+let autoSlide = setInterval(nextImage, 5000);
 
-   function updateCarousel() {
-       const newTransform = -currentIndex * 100 + '%';
-       carousel.style.transform = `translateX(${newTransform})`;
-   }
+function updateCarousel() {
+    const newTransform = -currentIndex * 100 + '%';
+    carousel.style.transform = `translateX(${newTransform})`;
+}
 
-   function nextImage() {
-       currentIndex = (currentIndex + 1) % totalImages;
-       updateCarousel();
-       resetAutoSlide();
-   }
+function nextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateCarousel();
+    resetAutoSlide();
+}
 
-   function prevImage() {
-       currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-       updateCarousel();
-       resetAutoSlide();
-   }
+function prevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateCarousel();
+    resetAutoSlide();
+}
 
-   function resetAutoSlide() {
-       clearInterval(autoSlide);
-       autoSlide = setInterval(nextImage, 5000);
-   }
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextImage, 5000);
+}
 // Funcionalidade do modal de categorias
 document.getElementById('categoriesBtn').addEventListener('click', function(event) {
  event.stopPropagation(); // Impede o clique fora do botão de fechar o modal
