@@ -276,3 +276,71 @@ footer .footer-links a:hover {
     font-size: 14px;
     margin: 5px 0;
 }
+
+/* Estilos da seção de informações da conta */
+/* .account-info {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.account-info h2 {
+    color: #021B33;
+    margin-bottom: 15px;
+}
+
+.account-info p {
+    color: #666;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Estilos da seção de progresso */
+/* .progress-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.progress-section h2 {
+    color: #021B33;
+    margin-bottom: 15px;
+}
+
+.progress-list {
+    list-style: none;
+    padding: 0;
+}
+
+.progress-item {
+    margin-bottom: 20px;
+}
+
+.progress-item h3 {
+    color: #021B33;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background-color: #E5E5E5;
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #12577B;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-item p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+} */

@@ -45,3 +45,77 @@
 </body>
 
 </html>
+<!-- <div id="userInfo">
+  <section class="account-info">
+      <h2>Meu Perfil</h2>
+      <div class="user-details">
+          <p><strong>Nome:</strong> <span id="userName">João Silva</span></p>
+          <p><strong>Email:</strong> <span id="userEmail">joao.silva@example.com</span></p>
+          <p><strong>Data de Cadastro:</strong> <span id="userSignupDate">01/01/2023</span></p>
+      </div>
+  </section>
+
+  <section class="progress-section">
+      <h2>Progresso dos Cursos</h2>
+      <ul class="progress-list">
+          <li class="progress-item">
+              <h3>Curso de HTML e CSS</h3>
+              <div class="progress-bar">
+                  <div class="progress" style="width: 75%;"></div>
+              </div>
+              <p>75% concluído</p>
+          </li>
+          <li class="progress-item">
+              <h3>Curso de JavaScript</h3>
+              <div class="progress-bar">
+                  <div class="progress" style="width: 50%;"></div>
+              </div>
+              <p>50% concluído</p>
+          </li>
+          <li class="progress-item">
+              <h3>Curso de React</h3>
+              <div class="progress-bar">
+                  <div class="progress" style="width: 25%;"></div>
+              </div>
+              <p>25% concluído</p>
+          </li>
+      </ul>
+  </section>
+</div> -->
+<!-- document.addEventListener("DOMContentLoaded", function() {
+  // Dados do usuário (simulados)
+  const userData = {
+      name: "João Silva",
+      email: "joao.silva@example.com",
+      signupDate: "01/01/2023",
+      progress: [
+          { course: "Curso de HTML e CSS", progress: 75 },
+          { course: "Curso de JavaScript", progress: 50 },
+          { course: "Curso de React", progress: 25 }
+      ]
+  };
+
+  // Atualiza os dados do usuário
+  document.getElementById("userName").textContent = userData.name;
+  document.getElementById("userEmail").textContent = userData.email;
+  document.getElementById("userSignupDate").textContent = userData.signupDate;
+
+  // Atualiza o progresso dos cursos
+  const progressList = document.querySelector(".progress-list");
+  progressList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
+
+  userData.progress.forEach(item => {
+      const progressItem = document.createElement("li");
+      progressItem.classList.add("progress-item");
+
+      progressItem.innerHTML = `
+          <h3>${item.course}</h3>
+          <div class="progress-bar">
+              <div class="progress" style="width: ${item.progress}%;"></div>
+          </div>
+          <p>${item.progress}% concluído</p>
+      `;
+
+      progressList.appendChild(progressItem);
+  });
+}); -->
