@@ -75,7 +75,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(data.user));
 
-            window.location.href = '/Curso_Video/frontend/Pages/Auth/Dash/UserDashboard.html';
+            window.location.href = './Dash/UserDashboard.html';
             return;
         } else {
             showMessage(data.message || 'Credenciais inválidas', true);
