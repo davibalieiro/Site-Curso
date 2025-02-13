@@ -1,86 +1,104 @@
+const categoriesBtn = document.getElementById('categoriesBtn');
+const categoryModal = document.getElementById('categoryModal');
+
+// Abrir/Fechar o Modal
+categoriesBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    categoryModal.classList.toggle('active');
+});
+
+// Fechar modal ao clicar fora dele
+document.addEventListener('click', (event) => {
+    if (!categoryModal.contains(event.target) && !categoriesBtn.contains(event.target)) {
+        categoryModal.classList.remove('active');
+    }
+});
+
+function openCategoriesModal() {
+  const btn = document.getElementById('categoriesBtn');
+  const modal = document.getElementById('categoryModal');
+
+  // Posiciona o modal logo abaixo do botão de categorias
+  const rect = btn.getBoundingClientRect();
+  modal.style.top = `${rect.bottom + window.scrollY}px`;
+  modal.style.left = `${rect.left + window.scrollX}px`;
+
+  modal.style.display = 'flex';
+}
+
+function selectCategory(category) {
+  localStorage.setItem('selectedCategory', category);
+  window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html';
+}
+
 let currentIndex = 0;
 const images = document.querySelectorAll('.carousel img');
 const totalImages = images.length;
 const carousel = document.querySelector('.carousel');
-
 let autoSlide = setInterval(nextImage, 5000);
 
+// Atualiza o carrossel com animação suave
 function updateCarousel() {
     const newTransform = -currentIndex * 100 + '%';
+    carousel.style.transition = 'transform 0.5s ease';
     carousel.style.transform = `translateX(${newTransform})`;
 }
 
+// Avança para a próxima imagem
 function nextImage() {
     currentIndex = (currentIndex + 1) % totalImages;
     updateCarousel();
     resetAutoSlide();
 }
 
+// Volta para a imagem anterior
 function prevImage() {
     currentIndex = (currentIndex - 1 + totalImages) % totalImages;
     updateCarousel();
     resetAutoSlide();
 }
 
+// Reinicia o auto slide para evitar sobreposição de intervalos
 function resetAutoSlide() {
     clearInterval(autoSlide);
     autoSlide = setInterval(nextImage, 5000);
 }
-// Funcionalidade do modal de categorias
-document.getElementById('categoriesBtn').addEventListener('click', function(event) {
- event.stopPropagation(); // Impede o clique fora do botão de fechar o modal
- openCategoriesModal();
-});
 
-function openCategoriesModal() {
- document.getElementById('categoryModal').style.display = 'flex';
-}
+// Ajusta o carrossel no redimensionamento da tela
+window.addEventListener('resize', updateCarousel);
 
-function closeCategoriesModal() {
- document.getElementById('categoryModal').style.display = 'none';
-}
-
-// Fechar o modal ao clicar fora dele
-document.addEventListener('click', function(event) {
- const modal = document.getElementById('categoryModal');
- const modalContent = document.querySelector('.modal-content');
- const categoriesBtn = document.getElementById('categoriesBtn');
-
- // Verifica se o clique foi fora do modal e do botão de categorias
- if (modal.style.display === 'flex' && !modalContent.contains(event.target) && !categoriesBtn.contains(event.target)) {
-   closeCategoriesModal();
- }
-});
-
-// Funcionalidade do chat
+// Abrir/Fechar o Chat
 function openChat() {
- document.getElementById('chatWindow').style.display = 'block';
+  document.getElementById('chatWindow').style.display = 'block';
 }
 
 function closeChat() {
- document.getElementById('chatWindow').style.display = 'none';
+  document.getElementById('chatWindow').style.display = 'none';
 }
 
+// Envia a mensagem e gera uma resposta automática
 function sendMessage() {
- var userMessage = document.getElementById('userInput').value;
- if (userMessage.trim() === "") return;
+  const userInput = document.getElementById('userInput').value;
+  if (userInput.trim() === "") return;
 
- var chatMessages = document.getElementById('chatMessages');
- var userMessageElement = document.createElement('div');
- userMessageElement.classList.add('message', 'user-message');
- userMessageElement.textContent = userMessage;
- chatMessages.appendChild(userMessageElement);
+  const chatMessages = document.getElementById('chatMessages');
+  
+  // Adiciona a mensagem do usuário
+  const userMessageElement = document.createElement('div');
+  userMessageElement.classList.add('message', 'user-message');
+  userMessageElement.textContent = userInput;
+  chatMessages.appendChild(userMessageElement);
 
- document.getElementById('userInput').value = '';
+  document.getElementById('userInput').value = '';
 
- // Simula uma resposta automática
- setTimeout(() => {
-   var botResponse = "Estou aqui para ajudar! Qual é sua dúvida?";
-   var botMessageElement = document.createElement('div');
-   botMessageElement.classList.add('message', 'bot-message');
-   botMessageElement.textContent = botResponse;
-   chatMessages.appendChild(botMessageElement);
+  // Resposta automática do bot
+  setTimeout(() => {
+      const botMessageElement = document.createElement('div');
+      botMessageElement.classList.add('message', 'bot-message');
+      botMessageElement.textContent = "Estou aqui para ajudar! Qual é sua dúvida?";
+      chatMessages.appendChild(botMessageElement);
 
-   chatMessages.scrollTop = chatMessages.scrollHeight;
- }, 1000);
+      // Rolagem automática
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1000);
 }

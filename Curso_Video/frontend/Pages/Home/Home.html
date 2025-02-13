@@ -9,14 +9,26 @@
 <body>
   <header>
     <div class="logo">
-      <img src="./img/Captura_de_tela_2x025-01-24_113913__1_-removebg-preview (1).png" alt="Ícone da Plataforma">
+      <img src="/Site-Curso/Curso_Video/frontend/Img/download 1.png" alt="Ícone da Plataforma">
     </div>
     <div>
       <h1>Plataforma de Cursos</h1>
     </div>
     <div class="navbar">
       <a href="#">Início</a>
-      <a href="#" id="categoriesBtn">Categorias</a>
+      <div class="categoriesBtn" id="categoriesBtn">
+        <a href="#">Categorias</a>
+        <div class="category-modal" id="categoryModal">
+          <h3>Categorias de TI</h3>
+          <ul>
+            <li onclick="selectCategory('Desenvolvimento Web')">Desenvolvimento Web</li>
+            <li onclick="selectCategory('Inteligência Artificial')">Inteligência Artificial</li>
+            <li onclick="selectCategory('Ciência de Dados')">Ciência de Dados</li>
+            <li onclick="selectCategory('Segurança da Informação')">Segurança da Informação</li>
+            <li onclick="selectCategory('Banco de Dados')">Banco de Dados</li>
+          </ul>
+        </div>
+      </div>
       <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
       <a href="/Site-Curso/Curso_Video/frontend/Pages/New/new.html">Noticias</a>
       <a href="../Auth/Dash/UserDashboard.html">Conta</a>
@@ -32,7 +44,7 @@
       <div class="carousel">
           <img src="./mitsuri-kanroji-3840x2160-16948.jpg" alt="Banner 1">
           <img src="./inosuke-hashibira-3840x2160-12117.jpg" alt="Banner 2">
-          <img src="./zenitsu-agatsuma-3840x2160-20236.jpg" alt="Banner 3">
+          <img src="" alt="Banner 3">
       </div>
       <button class="prev" onclick="prevImage()">&#10094;</button>
       <button class="next" onclick="nextImage()">&#10095;</button>
@@ -103,17 +115,14 @@
       <span class="close-modal" onclick="closeCategoriesModal()">✖</span>
       <h3>Categorias de TI</h3>
       <ul>
-        <li>Desenvolvimento Web</li>
-        <li>Desenvolvimento de Aplicações Móveis</li>
-        <li>Inteligência Artificial</li>
-        <li>Ciência de Dados</li>
-        <li>Redes de Computadores</li>
-        <li>Segurança da Informação</li>
-        <li>Banco de Dados</li>
+        <li onclick="selectCategory('Desenvolvimento Web')">Desenvolvimento Web</li>
+        <li onclick="selectCategory('Inteligência Artificial')">Inteligência Artificial</li>
+        <li onclick="selectCategory('Ciência de Dados')">Ciência de Dados</li>
+        <li onclick="selectCategory('Segurança da Informação')">Segurança da Informação</li>
+        <li onclick="selectCategory('Banco de Dados')">Banco de Dados</li>
       </ul>
     </div>
   </div>
- 
   <!-- Chat de Suporte -->
   <div class="chat-button" onclick="openChat();">
     💬

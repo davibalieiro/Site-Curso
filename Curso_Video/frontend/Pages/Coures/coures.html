@@ -19,8 +19,8 @@
     <div class="navbar">
       <a href="/Site-Curso/Curso_Video/frontend/Pages/Home/Home.html">Início</a>
       <a href="#" id="categoriesBtn">Categorias</a>
-      <a href="/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
-      <a href="#">Ofertas</a>
+      <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
+      <a href="/Site-Curso/Curso_Video/frontend/Pages/New/new.html">Notícia</a>
       <a href="../Auth/Dash/UserDashboard.html">Conta</a>
     </div>
     <div class="search-bar">
@@ -356,22 +356,7 @@
     <p class="course-rating">⭐⭐⭐⭐⭐ 4.8</p>
     <p class="course-message2">Classificação mais alta</p>
   </div>
-</section>  
-  </section>
-  
-<script>
-    function filterCategory(category) {
-      let courses = document.querySelectorAll('.course-card');
-      courses.forEach(course => {
-        if (category === 'Todos' || course.getAttribute('data-category') === category) {
-          course.style.display = 'block';
-        } else {
-          course.style.display = 'none';
-        }
-      });
-    }
-  </script>
-  
+</section>   
   <!-- Rodapé -->
   <footer>
     <div class="footer-links">
@@ -382,6 +367,6 @@
     </div>
     <p>&copy; 2025 Plataforma de Cursos - Todos os direitos reservados</p>
   </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
