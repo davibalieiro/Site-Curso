@@ -141,7 +141,7 @@ footer .footer-links a:hover {
 
 /* Estilos da grade de notícias */
 .news-grid {
-    padding: 20px;
+    padding: 30px;
     background-color: white;
     margin: 20px;
     border-radius: 8px;
@@ -151,12 +151,15 @@ footer .footer-links a:hover {
 .news-grid h2 {
     color: #021B33;
     margin-bottom: 20px;
+    height: auto;
 }
 
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    height: auto;
+    overflow: visible;
 }
 
 .card {
