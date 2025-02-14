@@ -22,13 +22,21 @@ function showMessage(message, isError = false) {
         messageDiv.style.display = 'none';
     }, 3000);
 }
-
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById('registerUsername').value;
+    const name = document.getElementById('registerUsername').value;
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
+
+    if (!name || !email || !password) {
+        showMessage('Preencha todos os campos obrigatórios', true);
+        return;
+    }
+
+    const submitButton = document.querySelector('#registerForm button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Registrando...';
 
     try {
         const response = await fetch(`${API_URL}/register`, {
@@ -36,27 +44,31 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password, email }), 
+            body: JSON.stringify({ name, email, password }),
         });
 
         const data = await response.json();
         if (response.ok) {
             showMessage('Usuário registrado com sucesso!');
-            switchToLogin();
-        } else {
+            setTimeout(() => {
+                switchToLogin();
+            }, 2000); // Redireciona após 2 segundos
+        } 
+        else {
             showMessage(data.message || 'Erro ao registrar usuário', true);
         }
     } catch (error) {
         showMessage('Erro ao conectar com o servidor', true);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Cadastre-se';
     }
 });
-
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById('loginUsername').value;
+    const email = document.getElementById('loginUsername').value; // Certifique-se de que é o campo de email
     const password = document.getElementById('loginPassword').value;
-    
 
     try {
         const response = await fetch(`${API_URL}/login`, {
@@ -64,7 +76,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }), // Certifique-se de que está enviando email e password
         });
 
         const data = await response.json();
@@ -76,15 +88,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             localStorage.setItem('user', JSON.stringify(data.user));
 
             window.location.href = './Dash/UserDashboard.html';
-            return;
         } else {
             showMessage(data.message || 'Credenciais inválidas', true);
         }
     } catch (error) {
         showMessage('Erro ao conectar com o servidor', true);
-        
-        console.log(response);
-        
+        console.error(error);
     }
 });
 

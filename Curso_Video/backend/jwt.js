@@ -3,46 +3,60 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const User = require('./models/user'); // Importando o modelo User
+const mysql = require('mysql2/promise');
 
 const app = express();
 const PORT = 3000;
-const SECRET_KEY = 'Y@3Kp$7nVd!xGzR^mAqTjLwXf&C9*bD5';
+const SECRET_KEY = process.env.SECRET_KEY || 'sua_chave_secreta_aqui'; // Adicione uma chave secreta padrão para desenvolvimento
 
-// Conexão com o MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/authApp', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('Conectado ao MongoDB!');
-}).catch(err => {
-    console.error('Erro ao conectar ao MongoDB:', err);
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'authApp'
 });
+
+(async () => {
+    try {
+        await db.query(`
+            CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL
+            ) ENGINE=INNODB;
+        `);
+        console.log('Tabela "users" criada ou já existente.');
+    } catch (error) {
+        console.error('Erro ao criar tabela:', error);
+    }
+})();
 
 app.use(cors());
 app.use(bodyParser.json());
 
 // Rota de Registro
 app.post('/register', async (req, res) => {
+    console.log('Corpo da requisição:', req.body); // Adicione este log
     const { name, email, password } = req.body;
 
+    // Verificação dos campos obrigatórios
+    if (!name || !email || !password) {
+        return res.status(400).json({ message: 'Preencha todos os campos obrigatórios' });
+    }
+
+    // Restante do código...
+
     try {
-        const userExists = await User.findOne({ email });
-        if (userExists) {
+        const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        if (users.length > 0) {
             return res.status(400).json({ message: 'Usuário já existe' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = new User({
-            name,
-            email,
-            password: hashedPassword
-        });
-
-        await newUser.save();
-        console.log('Novo usuário registrado:', newUser);
+        await db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword]);
+        console.log('Novo usuário registrado:', { name, email });
 
         res.status(201).json({ message: 'Usuário registrado com sucesso' });
     } catch (error) {
@@ -53,23 +67,30 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    console.log('Tentativa de login:', { email, password }); // Log para depuração
 
     try {
-        const user = await User.findOne({ email });
-        if (!user) {
+        const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        if (users.length === 0) {
+            console.log('Usuário não encontrado'); // Log para depuração
             return res.status(401).json({ message: 'Credenciais inválidas' });
         }
 
+        const user = users[0];
+        console.log('Usuário encontrado:', user); // Log para depuração
+
         const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log('Senha corresponde:', passwordMatch); // Log para depuração
+
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
         }
 
-        const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
 
         res.json({
             token,
-            user: { id: user._id, name: user.name, email: user.email }
+            user: { id: user.id, name: user.name, email: user.email }
         });
     } catch (error) {
         console.error(error);
@@ -77,7 +98,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Middleware de Autenticação
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -91,7 +111,6 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// Rota Protegida
 app.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'Esta é uma rota protegida', user: req.user });
 });
