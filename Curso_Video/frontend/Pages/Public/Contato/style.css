@@ -26,8 +26,8 @@ header {
     font-weight: bold;
 }
 
-.about {
-    max-width: 1000px;
+.contact {
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     background: white;
@@ -35,29 +35,42 @@ header {
     border-radius: 10px;
 }
 
-.about h2 {
+.contact h2 {
     color: #2c3e50;
-    border-bottom: 2px solid #2c3e50;
+    border-bottom: 2px solid #021B33;
     padding-bottom: 5px;
 }
 
-.creators {
+form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.creator {
-    background: #ecf0f1;
-    padding: 15px;
-    border-radius: 8px;
-    width: calc(33% - 20px);
-    box-shadow: 0 2px 5px #021B33;
+label {
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-.creator h3 {
-    color: #2980b9;
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #12577B;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #1a252f;
 }
 
 footer {

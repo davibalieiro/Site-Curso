@@ -22,6 +22,11 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+header .title-main{
+    color: white;
+    font-size: 36px;
+    margin-left: 10px;
+}
 
 header .logo img {
     width: 100px;

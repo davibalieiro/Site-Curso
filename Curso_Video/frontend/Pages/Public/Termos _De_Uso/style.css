@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    color: #021B33;
+    color: #333;
 }
 
 header {
@@ -26,38 +26,18 @@ header {
     font-weight: bold;
 }
 
-.about {
+.terms {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
     background: white;
-    box-shadow: 0 0 10px #021B33;
-    border-radius: 10px;
+    box-shadow: 0 0 10px #12577B;
 }
 
-.about h2 {
-    color: #2c3e50;
-    border-bottom: 2px solid #2c3e50;
+.terms h2 {
+    color: #021B33;
+    border-bottom: 2px solid #021B33;
     padding-bottom: 5px;
-}
-
-.creators {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-}
-
-.creator {
-    background: #ecf0f1;
-    padding: 15px;
-    border-radius: 8px;
-    width: calc(33% - 20px);
-    box-shadow: 0 2px 5px #021B33;
-}
-
-.creator h3 {
-    color: #2980b9;
 }
 
 footer {
@@ -67,3 +47,4 @@ footer {
     padding: 15px 0;
     margin-top: 20px;
 }
+
