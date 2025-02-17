@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cursos Online</h1>
+        <nav>
+            <a href="#courses">Cursos</a>
+            <a href="#login">Login</a>
+            <a href="#register">Registrar</a>
+        </nav>
+    </header>
+
+    <section id="courses" class="courses-container">
+        <!-- Os cursos serão carregados dinamicamente aqui -->
+    </section>
+
+    <section id="login" class="login-form">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <section id="register" class="register-form">
+        <h2>Registrar</h2>
+        <form id="registerForm">
+            <input type="text" id="registerName" placeholder="Nome" required>
+            <input type="email" id="registerEmail" placeholder="Email" required>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+            <button type="submit">Registrar</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
