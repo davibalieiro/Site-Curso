@@ -106,86 +106,113 @@
   .filters ul li:hover {
     background-color: #ddd;
   }
-  
-  /* Listagem de Cursos */
-  .courses-container {
-    margin-left: 220px;
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  
-  .course-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: 0.3s;
-    padding: 15px;
-  }
-  
-  .course-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .course-card h3 {
-    margin: 10px 0;
-  }
-  
-  .course-price {
-    font-weight: bold;
-    color: #021B33;
-    margin-top: 5px;
-    background-color: #f4f4f4;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    font-size: 1.5rem;
-  }
-  
-  .course-rating {
-    color: #FF8C00;
-    font-size: 0.8rem;
-    margin-top: 5px;
-    display: inline-block;
-    background-color: #f4f4f4;
-    padding: 10px 15px;
-    border-radius: 5px;
-  }  
-  .course-message1{
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1rem;
-    margin-top: 12px;
-    padding: 10px 8px;
-    border-radius: 8px;
-    display: inline-block;
-  }
-  
-  .course-message2 {
-    background-color: #FFEB3B;
-    color: #333;
-    font-size: 1rem;
-    margin-top: 12px;
-    padding: 10px 8px;
-    border-radius: 8px;
-    display: inline-block;
-  }
-  
-  .course-message3 {
-    background-color: #F44336;
-    color: white;
-    font-size: 1rem;
-    margin-top: 12px;
-    padding: 10px 8px;
-    border-radius: 8px;
-    display: inline-block;
-  }
-  
+/* Listagem de Cursos */
+.courses-container {
+  margin-left: 220px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Opções de Ordenação */
+.sorting-options {
+  margin: 10px;
+  padding: 15px;
+  border: #021B33 5px solid;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  background-color: #12577B;
+}
+
+.sorting-options button {
+  padding: 10px 20px;
+  background-color: #021B33;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sorting-options button:hover {
+  background-color: #45a049;
+}
+
+.course-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: 0.3s;
+  padding: 15px;
+}
+
+.course-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.course-card h3 {
+  margin: 10px 0;
+}
+
+.course-price {
+  font-weight: bold;
+  color: #021B33;
+  margin-top: 5px;
+  background-color: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.course-rating {
+  color: #FF8C00;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: inline-block;
+  background-color: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 5px;
+}  
+
+.course-message1 {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1rem;
+  margin-top: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.course-message2 {
+  background-color: #FFEB3B;
+  color: #333;
+  font-size: 1rem;
+  margin-top: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.course-message3 {
+  background-color: #F44336;
+  color: white;
+  font-size: 1rem;
+  margin-top: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
   /* Rodapé */
   footer {
     background-color: #12577B;

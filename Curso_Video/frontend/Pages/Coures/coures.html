@@ -11,7 +11,7 @@
   <!-- Cabeçalho -->
   <header>
     <div class="logo">
-      <img src="./img/Captura_de_tela_2x025-01-24_113913__1_-removebg-preview (1).png" alt="Ícone da Plataforma">
+      <img src="#" alt="Ícone da Plataforma">
     </div>
     <div>
       <h1>Plataforma de Cursos</h1>
@@ -28,21 +28,30 @@
       <button onclick="searchCourses()">Pesquisar</button>
     </div>
   </header>
+     <!-- Opções de Ordenação -->
+     <div class="sorting-options">
+      <button onclick="sortCoursesByPrice('asc')">Preço mais Baixo</button>
+      <button onclick="sortCoursesByPrice('desc')">Preço mais auto</button>
+      <button onclick="sortCoursesByRating('desc')">Menor Avaliação </button>
+      <button onclick="sortCoursesByRating('asc')">Maior Avaliação </button>
+    </div>
 
   <!-- Filtros -->
-  <aside class="filters">
-    <h3>Filtrar por Categoria</h3>
-    <ul>
-      <li onclick="filterCategory('Todos')">Todos</li>
-      <li onclick="filterCategory('Desenvolvimento Web')">Desenvolvimento Web</li>
-      <li onclick="filterCategory('Inteligência Artificial')">Inteligência Artificial</li>
-      <li onclick="filterCategory('Ciência de Dados')">Ciência de Dados</li>
-      <li onclick="filterCategory('Segurança da Informação')">Segurança da Informação</li>
-      <li onclick="filterCategory('Banco de Dados')">Banco de Dados</li>
-    </ul>
-  </aside>
-  <div class="courses-container"></div>
-   
+  <main>
+    <aside class="filters">
+      <h3>Filtrar por Categoria</h3>
+      <ul>
+        <li onclick="filterCategory('Todos')">Todos</li>
+        <li onclick="filterCategory('Desenvolvimento Web')">Desenvolvimento Web</li>
+        <li onclick="filterCategory('Inteligência Artificial')">Inteligência Artificial</li>
+        <li onclick="filterCategory('Ciência de Dados')">Ciência de Dados</li>
+        <li onclick="filterCategory('Segurança da Informação')">Segurança da Informação</li>
+        <li onclick="filterCategory('Banco de Dados')">Banco de Dados</li>
+      </ul>
+    </aside>
+
+    <div id="courses-container" class="courses-container"></div>
+  </main>   
   <!-- Rodapé -->
   <footer>
     <div class="footer-links">
