@@ -3,18 +3,6 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
-const mysql = require('mysql2/promise');
-
-const app = express();
-const PORT = 3000;
-const SECRET_KEY = process.env.SECRET_KEY || 'Y@3Kp$7nVd!xGzR^mAqTjLwXf&C9*bD5'; // Adicione uma chave secreta padrão para desenvolvimento
-
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'authApp'
-});
 
 (async () => {
     try {
