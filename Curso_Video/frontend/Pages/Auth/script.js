@@ -22,6 +22,7 @@ function showMessage(message, isError = false) {
         messageDiv.style.display = 'none';
     }, 3000);
 }
+
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -33,6 +34,8 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         showMessage('Preencha todos os campos obrigatórios', true);
         return;
     }
+
+    console.log('Enviando dados de registro:', { name, email, password }); // Log para depuração
 
     const submitButton = document.querySelector('#registerForm button[type="submit"]');
     submitButton.disabled = true;
@@ -48,27 +51,31 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         });
 
         const data = await response.json();
+        console.log('Resposta do servidor:', data); // Log para depuração
         if (response.ok) {
             showMessage('Usuário registrado com sucesso!');
             setTimeout(() => {
                 switchToLogin();
             }, 2000); // Redireciona após 2 segundos
-        } 
-        else {
+        } else {
             showMessage(data.message || 'Erro ao registrar usuário', true);
         }
     } catch (error) {
         showMessage('Erro ao conectar com o servidor', true);
+        console.error('Erro ao registrar usuário:', error);
     } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Cadastre-se';
     }
 });
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('loginUsername').value; // Certifique-se de que é o campo de email
     const password = document.getElementById('loginPassword').value;
+
+    console.log('Enviando dados de login:', { email, password }); // Log para depuração
 
     try {
         const response = await fetch(`${API_URL}/login`, {
@@ -80,6 +87,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         });
 
         const data = await response.json();
+        console.log('Resposta do servidor:', data); // Log para depuração
         if (response.ok) {
             token = data.token;
             showMessage('Login realizado com sucesso!');
@@ -93,7 +101,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
     } catch (error) {
         showMessage('Erro ao conectar com o servidor', true);
-        console.error(error);
+        console.error('Erro ao realizar login:', error);
     }
 });
 

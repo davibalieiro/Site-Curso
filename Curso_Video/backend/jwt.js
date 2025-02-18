@@ -3,6 +3,19 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const mysql = require('mysql2/promise');
+
+const app = express();
+const PORT = 3000;
+const SECRET_KEY = 'your_secret_key'; // Certifique-se de definir uma chave secreta
+
+// Configuração da conexão com o banco de dados
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'root', // Substitua pelo seu password do banco de dados
+    database: 'authApp' // Substitua pelo nome do seu banco de dados
+});
 
 (async () => {
     try {
@@ -25,19 +38,19 @@ app.use(bodyParser.json());
 
 // Rota de Registro
 app.post('/register', async (req, res) => {
-    console.log('Corpo da requisição:', req.body); // Adicione este log
+    console.log('Corpo da requisição:', req.body); // Log do corpo da requisição
     const { name, email, password } = req.body;
 
     // Verificação dos campos obrigatórios
     if (!name || !email || !password) {
+        console.log('Campos obrigatórios faltando'); // Log para depuração
         return res.status(400).json({ message: 'Preencha todos os campos obrigatórios' });
     }
-
-    // Restante do código...
 
     try {
         const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
         if (users.length > 0) {
+            console.log('Usuário já existe'); // Log para depuração
             return res.status(400).json({ message: 'Usuário já existe' });
         }
 
@@ -48,11 +61,12 @@ app.post('/register', async (req, res) => {
 
         res.status(201).json({ message: 'Usuário registrado com sucesso' });
     } catch (error) {
-        console.error(error);
+        console.error('Erro ao registrar usuário:', error);
         res.status(500).json({ message: 'Erro ao registrar usuário' });
     }
 });
 
+// Rota de Login
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     console.log('Tentativa de login:', { email, password }); // Log para depuração
@@ -81,11 +95,12 @@ app.post('/login', async (req, res) => {
             user: { id: user.id, name: user.name, email: user.email }
         });
     } catch (error) {
-        console.error(error);
+        console.error('Erro ao realizar login:', error);
         res.status(500).json({ message: 'Erro ao realizar login' });
     }
 });
 
+// Middleware de autenticação
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -99,6 +114,7 @@ function authenticateToken(req, res, next) {
     });
 }
 
+// Rota protegida
 app.get('/protected', authenticateToken, (req, res) => {
     res.json({ message: 'Esta é uma rota protegida', user: req.user });
 });

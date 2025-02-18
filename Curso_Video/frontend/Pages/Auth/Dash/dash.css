@@ -182,7 +182,7 @@ footer .footer-links a:hover {
     cursor: pointer;
 }
 
-.chat-input button :hover {
+.chat-input button:hover {
     background-color: #A9CFE5;
 }
 
@@ -277,28 +277,8 @@ footer .footer-links a:hover {
     margin: 5px 0;
 }
 
-/* Estilos da seção de informações da conta */
-/* .account-info {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-
-.account-info h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-}
-
-.account-info p {
-    color: #666;
-    font-size: 16px;
-    margin: 10px 0;
-}
-
 /* Estilos da seção de progresso */
-/* .progress-section {
+.progress-section {
     background-color: white;
     border-radius: 8px;
     padding: 20px;
@@ -343,4 +323,4 @@ footer .footer-links a:hover {
     color: #666;
     font-size: 14px;
     margin-top: 5px;
-} */
+}
