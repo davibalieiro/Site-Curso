@@ -12,9 +12,9 @@
   }
   
   header {
-    background-color: #021B33;
+    background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
-    padding: 20px 50px;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -215,7 +215,7 @@
 
   /* Rodapé */
   footer {
-    background-color: #12577B;
+    background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
     text-align: center;
     padding: 15px;

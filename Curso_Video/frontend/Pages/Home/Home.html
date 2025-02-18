@@ -42,7 +42,7 @@
     <!-- Banner de Imagens Rotativas -->
     <div class="carousel-container">
       <div class="carousel">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (3).png" alt="Banner 1">
+          <img src="/Site-Curso/Curso_Video/frontend/Img/boto.png" alt="Banner 1">
           <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (2).png" alt="Banner 2">
           <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (1).png" alt="Banner 3">
       </div> 
@@ -69,28 +69,28 @@
             <button>Comprar</button>
         </div>
         <div class="card">
-            <img src="img/react.png" alt="Curso de React">
+            <img src="/Site-Curso/Curso_Video/frontend/Img/React.jpg" alt="Curso de React">
             <h3>React do Zero ao Avançado</h3>
             <p>Crie aplicações web modernas com React.</p>
             <span>R$ 79,90</span>
             <button>Comprar</button>
         </div>
         <div class="card">
-            <img src="img/java.png" alt="Curso de Java">
+            <img src="/Site-Curso/Curso_Video/frontend/Img/JavaScript.jpg" alt="Curso de Java">
             <h3>Java Completo</h3>
             <p>Aprenda Java e programação orientada a objetos.</p>
             <span>R$ 69,90</span>
             <button>Comprar</button>
         </div>
         <div class="card">
-            <img src="img/javascript-avancado.png" alt="Curso de JavaScript Avançado">
+            <img src="/Site-Curso/Curso_Video/frontend/Img/javascript-avançado.jpg" alt="Curso de JavaScript Avançado">
             <h3>JavaScript Avançado</h3>
             <p>Aprofunde seus conhecimentos em JavaScript.</p>
             <span>R$ 89,90</span>
             <button>Comprar</button>
         </div>
         <div class="card">
-            <img src="img/sql.png" alt="Curso de Banco de Dados SQL">
+            <img src="/Site-Curso/Curso_Video/frontend/Img/SLQ.jpg" alt="Curso de Banco de Dados SQL">
             <h3>Banco de Dados SQL</h3>
             <p>Aprenda a gerenciar bancos de dados SQL.</p>
             <span>R$ 39,90</span>
@@ -128,19 +128,88 @@
     💬
   </div>
  
-  <!-- Janela de Chat -->
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-      <h4>Suporte ao Cliente</h4>
-      <button onclick="closeChat();">✖</button>
+  <!-- Janela de Chat --><div class="chat-button" onclick="openChat();">
+    💬
+  </div>
+ 
+  <!-- Janela de Chat --><div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <h4>Suporte ao Cliente</h4>
+    <button onclick="closeChat();">✖</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot-message">Olá! Como posso ajudar você? Escolha uma das opções abaixo:</div>
+    <div class="message bot-message">
+      <button class="option-btn" onclick="sendOption('Reputação')">Reputação</button>
+      <button class="option-btn" onclick="sendOption('Perfil')">Perfil</button>
+      <button class="option-btn" onclick="sendOption('Sugestão de Curso')">Sugestão de Curso</button>
+      <button class="option-btn" onclick="sendOption('Perguntas Frequentes')">Perguntas Frequentes</button>
+      <button class="option-btn" onclick="sendOption('Solução de problemas: como desativar a aceleração de hardware no seu navegador')">Solução de problemas</button>
+      <button class="option-btn" onclick="sendOption('Relatar Vulnerabilidade de Segurança')">Relatar Vulnerabilidade de Segurança</button>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="message bot-message">Olá! Como posso ajudar você?</div>
-    </div>
-    <div class="chat-input">
-      <input type="text" id="userInput" placeholder="Digite sua mensagem...">
-      <button onclick="sendMessage()">Enviar</button>
-    </div>
+  </div>
+  <div class="chat-input" id="chatInput">
+    <!-- O campo de texto é removido, pois estamos usando botões de opção agora -->
+  </div>
+</div>
+ 
+<script>
+  function sendOption(option) {
+    const chatMessages = document.getElementById("chatMessages");
+ 
+    // Exibindo a mensagem do usuário
+    const newMessage = document.createElement("div");
+    newMessage.classList.add("message");
+    newMessage.classList.add("user-message");
+    newMessage.innerText = `Você escolheu: ${option}`;
+    chatMessages.appendChild(newMessage);
+ 
+    // Exibindo uma animação de carregamento enquanto o bot responde
+    const loadingMessage = document.createElement("div");
+    loadingMessage.classList.add("message");
+    loadingMessage.classList.add("bot-message");
+    loadingMessage.innerHTML = '<i>Carregando...</i>';
+    chatMessages.appendChild(loadingMessage);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+ 
+    // Resposta do bot após um pequeno delay
+    setTimeout(() => {
+      const botResponse = document.createElement("div");
+      botResponse.classList.add("message");
+      botResponse.classList.add("bot-message");
+ 
+      if (option === 'Reputação') {
+        botResponse.innerText = 'Você escolheu Reputação. Redirecionando para a página de Reputação...';
+        setTimeout(() => { window.location.href = 'reputacao.html'; }, 1500);
+      } else if (option === 'Perfil') {
+        botResponse.innerText = 'Você escolheu Perfil. Redirecionando para a página de Perfil...';
+        setTimeout(() => { window.location.href = 'perfil.html'; }, 1500);
+      } else if (option === 'Sugestão de Curso') {
+        botResponse.innerText = 'Você escolheu Sugestão de Curso. Redirecionando para a página de Sugestões de Curso...';
+        setTimeout(() => { window.location.href = 'sugestao-curso.html'; }, 1500);
+      } else if (option === 'Perguntas Frequentes') {
+        botResponse.innerText = 'Você escolheu Perguntas Frequentes. Redirecionando para o FAQ...';
+        setTimeout(() => { window.location.href = 'faq.html'; }, 1500);
+      } else if (option === 'Solução de problemas: como desativar a aceleração de hardware no seu navegador') {
+        botResponse.innerText = 'Você escolheu Solução de problemas. Redirecionando...';
+        setTimeout(() => { window.location.href = 'solucao-problemas.html'; }, 1500);
+      } else if (option === 'Relatar Vulnerabilidade de Segurança') {
+        botResponse.innerText = 'Você escolheu Relatar Vulnerabilidade de Segurança. Redirecionando...';
+        setTimeout(() => { window.location.href = 'relatar-vulnerabilidade.html'; }, 1500);
+      }
+     
+      // Remover mensagem de carregamento
+      chatMessages.removeChild(loadingMessage);
+      chatMessages.appendChild(botResponse);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Rolagem automática
+    }, 1000);
+  }
+ 
+  function closeChat() {
+    document.getElementById("chatWindow").style.display = 'none';
+  }
+</script>
+ 
   </div>
   <script src="script.js"></script>
 </body>
