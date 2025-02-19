@@ -75,30 +75,57 @@ function openChat() {
 function closeChat() {
   document.getElementById('chatWindow').style.display = 'none';
 }
-
-// Envia a mensagem e gera uma resposta automática
-function sendMessage() {
-  const userInput = document.getElementById('userInput').value;
-  if (userInput.trim() === "") return;
-
-  const chatMessages = document.getElementById('chatMessages');
-  
-  // Adiciona a mensagem do usuário
-  const userMessageElement = document.createElement('div');
-  userMessageElement.classList.add('message', 'user-message');
-  userMessageElement.textContent = userInput;
-  chatMessages.appendChild(userMessageElement);
-
-  document.getElementById('userInput').value = '';
-
-  // Resposta automática do bot
-  setTimeout(() => {
-      const botMessageElement = document.createElement('div');
-      botMessageElement.classList.add('message', 'bot-message');
-      botMessageElement.textContent = "Estou aqui para ajudar! Qual é sua dúvida?";
-      chatMessages.appendChild(botMessageElement);
-
-      // Rolagem automática
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-  }, 1000);
-}
+  function sendOption(option) {
+    const chatMessages = document.getElementById("chatMessages");
+ 
+    // Exibindo a mensagem do usuário
+    const newMessage = document.createElement("div");
+    newMessage.classList.add("message");
+    newMessage.classList.add("user-message");
+    newMessage.innerText = `Você escolheu: ${option}`;
+    chatMessages.appendChild(newMessage);
+ 
+    // Exibindo uma animação de carregamento enquanto o bot responde
+    const loadingMessage = document.createElement("div");
+    loadingMessage.classList.add("message");
+    loadingMessage.classList.add("bot-message");
+    loadingMessage.innerHTML = '<i>Carregando...</i>';
+    chatMessages.appendChild(loadingMessage);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+ 
+    // Resposta do bot após um pequeno delay
+    setTimeout(() => {
+      const botResponse = document.createElement("div");
+      botResponse.classList.add("message");
+      botResponse.classList.add("bot-message");
+ 
+      if (option === 'Reputação') {
+        botResponse.innerText = 'Você escolheu Reputação. Redirecionando para a página de Reputação...';
+        setTimeout(() => { window.location.href = 'reputacao.html'; }, 1500);
+      } else if (option === 'Perfil') {
+        botResponse.innerText = 'Você escolheu Perfil. Redirecionando para a página de Perfil...';
+        setTimeout(() => { window.location.href = 'perfil.html'; }, 1500);
+      } else if (option === 'Sugestão de Curso') {
+        botResponse.innerText = 'Você escolheu Sugestão de Curso. Redirecionando para a página de Sugestões de Curso...';
+        setTimeout(() => { window.location.href = 'sugestao-curso.html'; }, 1500);
+      } else if (option === 'Perguntas Frequentes') {
+        botResponse.innerText = 'Você escolheu Perguntas Frequentes. Redirecionando para o FAQ...';
+        setTimeout(() => { window.location.href = 'faq.html'; }, 1500);
+      } else if (option === 'Solução de problemas: como desativar a aceleração de hardware no seu navegador') {
+        botResponse.innerText = 'Você escolheu Solução de problemas. Redirecionando...';
+        setTimeout(() => { window.location.href = 'solucao-problemas.html'; }, 1500);
+      } else if (option === 'Relatar Vulnerabilidade de Segurança') {
+        botResponse.innerText = 'Você escolheu Relatar Vulnerabilidade de Segurança. Redirecionando...';
+        setTimeout(() => { window.location.href = 'relatar-vulnerabilidade.html'; }, 1500);
+      }
+     
+      // Remover mensagem de carregamento
+      chatMessages.removeChild(loadingMessage);
+      chatMessages.appendChild(botResponse);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Rolagem automática
+    }, 1000);
+  }
+ 
+  function closeChat() {
+    document.getElementById("chatWindow").style.display = 'none';
+  }
