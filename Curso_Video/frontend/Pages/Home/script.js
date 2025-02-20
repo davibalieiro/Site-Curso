@@ -129,3 +129,8 @@ function closeChat() {
   function closeChat() {
     document.getElementById("chatWindow").style.display = 'none';
   }
+
+  function redirecionarParaCompra(nome, preco, descricao) {
+    window.location.href = "/Site-Curso/Curso_Video/frontend/Pages/test/compra/Compra.html?curso=" + 
+        encodeURIComponent(nome) + "&preco=" + encodeURIComponent(preco) + "&descricao=" + encodeURIComponent(descricao);
+}
