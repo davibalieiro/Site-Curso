@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #021B33;
+    background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -43,7 +43,7 @@ header {
 
 footer {
     text-align: center;
-    background-color: #021B33;
+    background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
     padding: 15px 0;
     margin-top: 20px;

@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de Angular</title>
+    <title>Detalhes do Curso</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="curso-header">
-            <h1>Curso de Angular</h1>
+            <h1 id="course-title">Curso de Angular</h1>
         </div>
     </header>
    
@@ -40,23 +38,12 @@
                         <li><i class="fas fa-users"></i> Comunidade de suporte</li>
                     </ul>
                 </section>
- 
-                <section class="card">
-                    <h2>Explorar mais Temas</h2>
-                    <ul>
-                        <li><a href="#">TypeScript</a></li>
-                        <li><a href="#">RxJS</a></li>
-                        <li><a href="#">NgRx</a></li>
-                        <li><a href="#">Angular Material</a></li>
-                        <li><a href="#">Ionic</a></li>
-                    </ul>
-                </section>
             </div>
  
             <aside class="compra-card">
                 <h2>Adquira agora</h2>
-                <img src="angular-course.jpg" alt="Imagem representativa do curso">
-                <p>Preço: <strong>R$ 59,90</strong> <del>R$ 139,90</del></p>
+                <img src="angular-course.jpg" alt="Imagem representativa do curso" id="course-image">
+                <p>Preço: <strong id="course-price">R$ 59,90</strong></p>
                 <button onclick="window.location.href='#login'">Fazer login para comprar</button>
                 <p><i class="fas fa-tag"></i> Aplique um cupom de desconto</p>
                 <input type="text" placeholder="Insira o cupom">
@@ -70,5 +57,18 @@
     <footer>
         <p>&copy; 2025 Curso de Angular. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const title = urlParams.get('title');
+            const description = urlParams.get('description');
+            const price = urlParams.get('price');
+
+            document.getElementById('course-title').innerText = title;
+            document.getElementById('course-price').innerText = price;
+            // Adicione mais elementos conforme necessário
+        });
+    </script>
 </body>
 </html>

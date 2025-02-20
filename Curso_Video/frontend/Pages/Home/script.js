@@ -75,16 +75,17 @@ function openChat() {
 function closeChat() {
   document.getElementById('chatWindow').style.display = 'none';
 }
-  function sendOption(option) {
+
+function sendOption(option) {
     const chatMessages = document.getElementById("chatMessages");
- 
+
     // Exibindo a mensagem do usuário
     const newMessage = document.createElement("div");
     newMessage.classList.add("message");
     newMessage.classList.add("user-message");
     newMessage.innerText = `Você escolheu: ${option}`;
     chatMessages.appendChild(newMessage);
- 
+
     // Exibindo uma animação de carregamento enquanto o bot responde
     const loadingMessage = document.createElement("div");
     loadingMessage.classList.add("message");
@@ -92,13 +93,13 @@ function closeChat() {
     loadingMessage.innerHTML = '<i>Carregando...</i>';
     chatMessages.appendChild(loadingMessage);
     chatMessages.scrollTop = chatMessages.scrollHeight;
- 
+
     // Resposta do bot após um pequeno delay
     setTimeout(() => {
       const botResponse = document.createElement("div");
       botResponse.classList.add("message");
       botResponse.classList.add("bot-message");
- 
+
       if (option === 'Reputação') {
         botResponse.innerText = 'Você escolheu Reputação. Redirecionando para a página de Reputação...';
         setTimeout(() => { window.location.href = 'reputacao.html'; }, 1500);
@@ -118,19 +119,63 @@ function closeChat() {
         botResponse.innerText = 'Você escolheu Relatar Vulnerabilidade de Segurança. Redirecionando...';
         setTimeout(() => { window.location.href = 'relatar-vulnerabilidade.html'; }, 1500);
       }
-     
+
       // Remover mensagem de carregamento
       chatMessages.removeChild(loadingMessage);
       chatMessages.appendChild(botResponse);
       chatMessages.scrollTop = chatMessages.scrollHeight; // Rolagem automática
     }, 1000);
-  }
- 
-  function closeChat() {
-    document.getElementById("chatWindow").style.display = 'none';
-  }
+}
 
-  function redirecionarParaCompra(nome, preco, descricao) {
+function closeChat() {
+    document.getElementById("chatWindow").style.display = 'none';
+}
+
+function redirecionarParaCompra(nome, preco, descricao) {
     window.location.href = "/Site-Curso/Curso_Video/frontend/Pages/test/compra/Compra.html?curso=" + 
         encodeURIComponent(nome) + "&preco=" + encodeURIComponent(preco) + "&descricao=" + encodeURIComponent(descricao);
+}
+
+// Função para buscar cursos e redirecionar para a página específica do curso
+document.addEventListener("DOMContentLoaded", function() {
+    const searchButton = document.getElementById("search-button");
+    const searchInput = document.getElementById("search-input");
+
+    searchButton.addEventListener("click", async function() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query) {
+            try {
+                const response = await fetch('http://localhost:3001/api/courses');
+                if (!response.ok) {
+                    throw new Error('Falha ao buscar cursos');
+                }
+
+                const courses = await response.json();
+                const matchingCourse = courses.find(course => course.name.toLowerCase().includes(query));
+
+                if (matchingCourse) {
+                    window.location.href = `/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html?id=${encodeURIComponent(matchingCourse.id)}`;
+                } else {
+                    alert('Curso não encontrado');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar cursos:', error);
+                alert('Erro ao buscar cursos. Tente novamente mais tarde.');
+            }
+        }
+    });
+});
+
+function showCourseDetails(button) {
+  const card = button.closest('.card');
+  const title = card.querySelector('.course-title').innerText;
+  const description = card.querySelector('.course-description').innerText;
+  const price = card.querySelector('.course-price').innerText;
+
+  const url = new URL(window.location.origin + '/Curso_Video/frontend/Pages/Components/Angular/index.html');
+  url.searchParams.append('title', title);
+  url.searchParams.append('description', description);
+  url.searchParams.append('price', price);
+
+  window.location.href = url.href;
 }

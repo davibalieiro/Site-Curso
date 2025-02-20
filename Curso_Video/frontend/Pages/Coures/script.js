@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilters(); // Configura os filtros de categoria
 });
 
+// Função para carregar os cursos a partir da API
 async function loadCourses(category = 'Todos') {
     try {
         const coursesContainer = document.querySelector('.courses-container');
@@ -102,19 +103,19 @@ function sortCoursesByPrice(order = 'asc') {
     });
 
     courseCards.forEach(card => coursesContainer.appendChild(card));
-    }
+}
 
-    // Função para ordenar cursos por avaliação
-    function sortCoursesByRating(order = 'desc') {
-        const coursesContainer = document.querySelector('.courses-container');
-        const courseCards = Array.from(coursesContainer.children);
+// Função para ordenar cursos por avaliação
+function sortCoursesByRating(order = 'desc') {
+    const coursesContainer = document.querySelector('.courses-container');
+    const courseCards = Array.from(coursesContainer.children);
 
-        courseCards.sort((a, b) => {
-            const ratingA = parseFloat(a.querySelector('.course-rating').textContent.split(' ')[1]);
-            const ratingB = parseFloat(b.querySelector('.course-rating').textContent.split(' ')[1]);
+    courseCards.sort((a, b) => {
+        const ratingA = parseFloat(a.querySelector('.course-rating').textContent.split(' ')[1]);
+        const ratingB = parseFloat(b.querySelector('.course-rating').textContent.split(' ')[1]);
 
-            return order === 'asc' ? ratingA - ratingB : ratingB - ratingA;
-        });
+        return order === 'asc' ? ratingA - ratingB : ratingB - ratingA;
+    });
 
-        courseCards.forEach(card => coursesContainer.appendChild(card));
-    }
+    courseCards.forEach(card => coursesContainer.appendChild(card));
+}

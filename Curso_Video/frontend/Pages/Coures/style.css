@@ -119,18 +119,19 @@
 .sorting-options {
   margin: 10px;
   padding: 15px;
-  border: #021B33 5px solid;
+  background-color:  #a9cfe5;
+  border: #12577b 3px solid;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   gap: 20px;
   text-align: center;
-  background-color: #12577B;
+  
 }
 
 .sorting-options button {
   padding: 10px 20px;
-  background-color: #021B33;
+  background-color: #05294d;
   color: white;
   border: none;
   border-radius: 5px;
@@ -139,7 +140,7 @@
 }
 
 .sorting-options button:hover {
-  background-color: #45a049;
+  background-color: #12577b;
 }
 
 .course-card {
@@ -221,3 +222,20 @@
     padding: 15px;
     margin-top: 20px;
   }
+  footer .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  footer .footer-links a:hover {
+    color: #A9CFE5;
+  }
+  

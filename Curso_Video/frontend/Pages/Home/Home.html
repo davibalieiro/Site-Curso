@@ -34,16 +34,16 @@
       <a href="../Auth/Dash/UserDashboard.html">Conta</a>
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="Buscar cursos...">
-      <button>Pesquisar</button>
+      <input type="text" id="search-input" placeholder="Buscar cursos...">
+      <button id="search-button">Pesquisar</button>
     </div>
   </header>
 
   <!-- Banner de Imagens Rotativas -->
   <div class="carousel-container">
     <div class="carousel">
-      <img src="/Site-Curso/Curso_Video/frontend/Img/boto.png" alt="Banner 1">
-      <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (2).png" alt="Banner 2">
+      <img src="/Site-Curso/Curso_Video/frontend/Img/Vue  Guia para aprender as principais funcionalidades.png" alt="Banner 1">
+      <img src="/Site-Curso/Curso_Video/frontend/Img/MySQL Guia do básico ao avançado atualizado_enhanced 1.png" alt="Banner 2">
       <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (1).png" alt="Banner 3">
     </div> 
     <button class="prev" onclick="prevImage()">&#10094;</button>
@@ -53,11 +53,13 @@
   <section class="cursos">
     <h2>Cursos Populares</h2>
     <div class="container-cursos">
+        <!-- Cards de Cursos -->
         <div class="card">
           <img src="/Site-Curso/Curso_Video/frontend/Img/ADM Dados.jpg" alt="Curso de Administração de Dados">
-          <h3>Administração de Dados</h3>
-          <p>Gerencie e administre dados com eficiência.</p>
-          <span>R$ 119,90</span>
+          <h3 class="course-title">Administração de Dados</h3>
+          <p class="course-description">Gerencie e administre dados com eficiência.</p>
+          <span class="course-price">R$ 119,90</span>
+          <button class="sobre-curso" onclick="showCourseDetails(this)">Saber mais</button>
           <button onclick="redirecionarParaCompra('Administração de Dados', '119.90', 'Gerencie e administre dados com eficiência.')">Comprar</button>
         </div>
         <div class="card">
@@ -147,7 +149,7 @@
       <a href="/Site-Curso/Curso_Video/frontend/Pages/Public/Termos _De_Uso/index.html">Termos de Uso</a>
       <a href="/Site-Curso/Curso_Video/frontend/Pages/Public/Privac/privc.html">Privacidade</a>
     </div>
-    <p>&copy; 2025 Plataforma de Cursos - Todos os direitos reservados</p>
+    <p>&copy; 2025 DevAcademy - Todos os direitos reservados</p>
   </footer>
 
   <!-- Modal de Categorias -->
