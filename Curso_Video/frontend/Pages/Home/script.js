@@ -165,17 +165,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
-function showCourseDetails(button) {
-  const card = button.closest('.card');
-  const title = card.querySelector('.course-title').innerText;
-  const description = card.querySelector('.course-description').innerText;
-  const price = card.querySelector('.course-price').innerText;
-
-  const url = new URL(window.location.origin + '/Curso_Video/frontend/Pages/Components/Angular/index.html');
-  url.searchParams.append('title', title);
-  url.searchParams.append('description', description);
-  url.searchParams.append('price', price);
-
-  window.location.href = url.href;
-}

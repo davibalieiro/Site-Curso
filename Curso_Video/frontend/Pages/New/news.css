@@ -162,7 +162,7 @@ footer .footer-links a:hover {
 /* Estilos da grade de notícias */
 .news-grid {
     padding: 30px;
-    background-color: white;
+    background-color: rgb(253, 251, 251);
     margin: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -184,7 +184,7 @@ footer .footer-links a:hover {
 }
 
 .card {
-    background-color: #fff;
+    background-color: #f8f8f8;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
