@@ -54,6 +54,9 @@ async function loadCourses(category = 'Todos') {
                 <p class="course-price">R$ ${price}</p>
                 <p class="course-rating">${'⭐'.repeat(Math.round(course.rating))} ${course.rating}</p>
                 ${messages}
+                <br>
+                <button onclick="redirecionarParaCompra('${course.name}', '${course.price}', '${course.category}')">Comprar</button>
+                <button onclick="verMais('${course.name}')">Ver Mais</button>
             `;
 
             coursesContainer.appendChild(courseCard);
@@ -63,6 +66,18 @@ async function loadCourses(category = 'Todos') {
         document.querySelector('.courses-container').innerHTML = `<p>Erro ao carregar cursos. Tente novamente mais tarde.</p>`;
     }
 }
+
+// Função para redirecionar para a página de compra com os parâmetros do curso
+function redirecionarParaCompra(nome, preco, descricao) {
+    window.location.href = "/Site-Curso/Curso_Video/frontend/Pages/compra/compra.html?curso=" + 
+        encodeURIComponent(nome) + "&preco=" + encodeURIComponent(preco) + "&descricao=" + encodeURIComponent(descricao);
+  }
+  
+  // Função para redirecionar para a página de detalhes do curso
+  function verMais(nome) {
+    window.location.href = `/Site-Curso/Curso_Video/frontend/Pages/Components/Django/index.html?curso=${encodeURIComponent(nome)}`;
+  }
+  
 
 // Função para configurar os filtros de categoria
 function setupFilters() {

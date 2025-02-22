@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <h3>${course.name}</h3>
           <p>${course.category}</p>
           <span>R$ ${course.price}</span>
+          <br>
           <button onclick="redirecionarParaCompra('${course.name}', '${course.price}', '${course.category}')">Comprar</button>
           <button onclick="verMais('${course.name}')">Ver Mais</button>
         `;
