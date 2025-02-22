@@ -15,9 +15,8 @@
       <h1>DevAcademy</h1>
     </div>
     <div class="navbar">
-      <a href="#">Início</a>
       <div class="categoriesBtn" id="categoriesBtn">
-        <a href="#">Categorias</a>
+        <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Categorias</a>
         <div class="category-modal" id="categoryModal">
           <h3>Categorias de TI</h3>
           <ul>
@@ -31,7 +30,7 @@
       </div>
       <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
       <a href="/Site-Curso/Curso_Video/frontend/Pages/New/new.html">Noticias</a>
-      <a href="../Auth/Dash/UserDashboard.html">Conta</a>
+      <a href="/Site-Curso/Curso_Video/frontend/Pages/Auth/Register.html">Conta</a>
     </div>
     <div class="search-bar">
       <input type="text" id="search-input" placeholder="Buscar cursos...">
@@ -42,9 +41,9 @@
   <!-- Banner de Imagens Rotativas -->
   <div class="carousel-container">
     <div class="carousel">
-      <img src="/Site-Curso/Curso_Video/frontend/Img/Vue  Guia para aprender as principais funcionalidades.png" alt="Banner 1">
-      <img src="/Site-Curso/Curso_Video/frontend/Img/MySQL Guia do básico ao avançado atualizado_enhanced 1.png" alt="Banner 2">
-      <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (1).png" alt="Banner 3">
+      <img src="/Site-Curso/Curso_Video/frontend/Img/MySQL Guia do básico ao avançado atualizado_enhanced 1.png" alt="Banner 1">
+      <img src="/Site-Curso/Curso_Video/frontend/Img/Curso de Python 3 do básico ao avançado - com projetos reais (1).png" alt="Banner 2">
+      <img src="/Site-Curso/Curso_Video/frontend/Img/Vue  Guia para aprender as principais funcionalidades.png" alt="Banner 3">
     </div> 
     <button class="prev" onclick="prevImage()">&#10094;</button>
     <button class="next" onclick="nextImage()">&#10095;</button>
@@ -52,147 +51,74 @@
 
   <section class="cursos">
     <h2>Cursos Populares</h2>
-    <div class="container-cursos">
-        <!-- Cards de Cursos -->
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/ADM Dados.jpg" alt="Curso de Administração de Dados">
-          <h3 class="course-title">Administração de Dados</h3>
-          <p class="course-description">Gerencie e administre dados com eficiência.</p>
-          <span class="course-price">R$ 119,90</span>
-          
-          <button onclick="redirecionarParaCompra('Administração de Dados', '119.90', 'Gerencie e administre dados com eficiência.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/Amazon_Dynamo.png" alt="Curso de Amazon DynamoDB">
-          <h3>Amazon DynamoDB</h3>
-          <p>Implemente soluções com o banco de dados NoSQL da Amazon.</p>
-          <span>R$ 129,90</span>
-          <button onclick="redirecionarParaCompra('Amazon DynamoDB', '129.90', 'Implemente soluções com o banco de dados NoSQL da Amazon.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/vue.jpg" alt="Curso de Vue.js">
-          <h3>Vue.js</h3>
-          <p>Crie aplicações web interativas com Vue.js.</p>
-          <span>R$ 69,90</span>
-          <button onclick="redirecionarParaCompra('Vue.js', '69.90', 'Crie aplicações web interativas com Vue.js.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/webpack.jpg" alt="Curso de Webpack">
-          <h3>Webpack</h3>
-          <p>Domine o bundler de módulos mais popular para JavaScript.</p>
-          <span>R$ 79,90</span>
-          <button onclick="redirecionarParaCompra('Webpack', '79.90', 'Domine o bundler de módulos mais popular para JavaScript.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/sql server.jpg" alt="Curso de SQL Server">
-          <h3>SQL Server</h3>
-          <p>Aprenda a gerenciar bancos de dados com SQL Server.</p>
-          <span>R$ 89,90</span>
-          <button onclick="redirecionarParaCompra('SQL Server', '89.90', 'Aprenda a gerenciar bancos de dados com SQL Server.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/MySLQ.png" alt="Curso de MySQL">
-          <h3>MySQL</h3>
-          <p>Aprenda a usar o sistema de gerenciamento de banco de dados MySQL.</p>
-          <span>R$ 69,90</span>
-          <button onclick="redirecionarParaCompra('MySQL', '69.90', 'Aprenda a usar o sistema de gerenciamento de banco de dados MySQL.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/PostgreSQL.jpg" alt="Curso de PostgreSQL">
-          <h3>PostgreSQL</h3>
-          <p>Gerencie bancos de dados relacionais com PostgreSQL.</p>
-          <span>R$ 79,90</span>
-          <button onclick="redirecionarParaCompra('PostgreSQL', '79.90', 'Gerencie bancos de dados relacionais com PostgreSQL.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/Oracle.png" alt="Curso de Oracle">
-          <h3>Oracle</h3>
-          <p>Aprenda a usar o banco de dados Oracle.</p>
-          <span>R$ 89,90</span>
-          <button onclick="redirecionarParaCompra('Oracle', '89.90', 'Aprenda a usar o banco de dados Oracle.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/JavaScript.jpg" alt="Curso de JavaScript">
-          <h3>JavaScript</h3>
-          <p>Aprenda a linguagem de programação mais popular do mundo.</p>
-          <span>R$ 59,90</span>
-          <button onclick="redirecionarParaCompra('JavaScript', '59.90', 'Aprenda a linguagem de programação mais popular do mundo.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/Pyhton Panda.jpg" alt="Curso de Python com Pandas">
-          <h3>Python com Pandas</h3>
-          <p>Manipule e analise dados com a biblioteca Pandas.</p>
-          <span>R$ 89,90</span>
-          <button onclick="redirecionarParaCompra('Python com Pandas', '89.90', 'Manipule e analise dados com a biblioteca Pandas.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/Python I.A.jpg" alt="Curso de Python">
-          <h3>Python</h3>
-          <p>Aprenda Python, uma linguagem versátil e poderosa.</p>
-          <span>R$ 79,90</span>
-          <button onclick="redirecionarParaCompra('Python', '79.90', 'Aprenda Python, uma linguagem versátil e poderosa.')">Comprar</button>
-        </div>
-        <div class="card">
-          <img src="/Site-Curso/Curso_Video/frontend/Img/React.jpg" alt="Curso de React">
-          <h3>React</h3>
-          <p>Desenvolva interfaces de usuário com React.</p>
-          <span>R$ 99,90</span>
-          <button onclick="redirecionarParaCompra('React', '99.90', 'Desenvolva interfaces de usuário com React.')">Comprar</button>
-        </div>
-      
+    <div class="container-cursos" id="courses-container">
+        <!-- Cards de Cursos serão inseridos dinamicamente aqui -->
     </div>
   </section>
   <footer>
     <div class="footer-links">
-      <a href="/Site-Curso/Curso_Video/frontend/Pages/Public/Sobre/sobre.html">Sobre</a>
-      <a href="/Site-Curso/Curso_Video/frontend/Pages/Public/Contato/idex.html">Contato</a>
-      <a href="/Site-Curso/Curso_Video/frontend/Pages/Public/Termos _De_Uso/index.html">Termos de Uso</a>
-      <a href="/Site-Curso/Curso_Video/frontend/Pages/Public/Privac/privc.html">Privacidade</a>
+      <a href="/frontend/Pages/Public/Sobre/sobre.html">Sobre</a>
+      <a href="/frontend/Pages/Public/Contato/idex.html">Contato</a>
+      <a href="/frontend/Pages/Public/Termos_De_Uso/index.html">Termos de Uso</a>
+      <a href="/frontend/Pages/Public/Privac/privc.html">Privacidade</a>
     </div>
     <p>&copy; 2025 DevAcademy - Todos os direitos reservados</p>
   </footer>
-
-  <!-- Modal de Categorias -->
-  <div class="category-modal" id="categoryModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeCategoriesModal()">✖</span>
-      <h3>Categorias de TI</h3>
-      <ul>
-        <li onclick="selectCategory('Desenvolvimento Web')">Desenvolvimento Web</li>
-        <li onclick="selectCategory('Inteligência Artificial')">Inteligência Artificial</li>
-        <li onclick="selectCategory('Ciência de Dados')">Ciência de Dados</li>
-        <li onclick="selectCategory('Segurança da Informação')">Segurança da Informação</li>
-        <li onclick="selectCategory('Banco de Dados')">Banco de Dados</li>
-      </ul>
-    </div>
-  </div>
   <!-- Chat de Suporte -->
   <div class="chat-button" onclick="openChat();">
     💬
   </div>
-
-  <!-- Janela de Chat -->
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-      <h4>Suporte ao Cliente</h4>
-      <button onclick="closeChat();">✖</button>
+ 
+  <!-- Janela de Chat --><div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <h4>Suporte ao Cliente</h4>
+    <button onclick="closeChat();">✖</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot-message">Olá! Como posso ajudar você? Escolha uma das opções abaixo:</div>
+    <div class="message bot-message">
+      <button class="option-btn" onclick="sendOption('Reputação')">Reputação</button>
+      <button class="option-btn" onclick="sendOption('Perfil')">Perfil</button>
+      <button class="option-btn" onclick="sendOption('Sugestão de Curso')">Sugestão de Curso</button>
+      <button class="option-btn" onclick="sendOption('Perguntas Frequentes')">Perguntas Frequentes</button>
+      <button class="option-btn" onclick="sendOption('Solução de problemas: como desativar a aceleração de hardware no seu navegador')">Solução de problemas</button>
+      <button class="option-btn" onclick="sendOption('Relatar Vulnerabilidade de Segurança')">Relatar Vulnerabilidade de Segurança</button>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="message bot-message">Olá! Como posso ajudar você? Escolha uma das opções abaixo:</div>
-      <div class="message bot-message">
-        <button class="option-btn" onclick="sendOption('Reputação')">Reputação</button>
-        <button class="option-btn" onclick="sendOption('Perfil')">Perfil</button>
-        <button class="option-btn" onclick="sendOption('Sugestão de Curso')">Sugestão de Curso</button>
-        <button class="option-btn" onclick="sendOption('Perguntas Frequentes')">Perguntas Frequentes</button>
-        <button class="option-btn" onclick="sendOption('Solução de problemas')">Solução de problemas</button>
-        <button class="option-btn" onclick="sendOption('Relatar Vulnerabilidade de Segurança')">Relatar Vulnerabilidade de Segurança</button>
-      </div>
-    </div>
-    <div class="chat-input" id="chatInput">
-      <!-- O campo de texto é removido, pois estamos usando botões de opção agora -->
-    </div>
+  </div>
+  <div class="chat-input" id="chatInput">
+    <!-- O campo de texto é removido, pois estamos usando botões de opção agora -->
   </div>
 
   <script src="script.js"></script>
+</body>
+</html>
+<div class="chat-button" onclick="openChat();">
+
+  💬
+</div>
+ 
+<!-- Janela de Chat -->
+<div class="chat-window" id="chatWindow" style="display: none;">
+<div class="chat-header">
+<h4>Suporte ao Cliente</h4>
+<button onclick="closeChat();">✖</button>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="message bot-message">Olá! Como posso ajudar você? Escolha uma das opções abaixo:</div>
+<div class="message bot-message">
+<button class="option-btn" onclick="sendOption('Reputação')">Reputação</button>
+<button class="option-btn" onclick="sendOption('Perfil')">Perfil</button>
+<button class="option-btn" onclick="sendOption('Sugestão de Curso')">Sugestão de Curso</button>
+<button class="option-btn" onclick="sendOption('Perguntas Frequentes')">Perguntas Frequentes</button>
+<button class="option-btn" onclick="sendOption('Solução de problemas: como desativar a aceleração de hardware no seu navegador')">Solução de problemas</button>
+<button class="option-btn" onclick="sendOption('Relatar Vulnerabilidade de Segurança')">Relatar Vulnerabilidade de Segurança</button>
+</div>
+</div>
+<div class="chat-input" id="chatInput">
+<!-- O campo de texto é removido, pois estamos usando botões de opção agora -->
+</div>
+</div>
+ 
+<script src="script.js"></script>
 </body>
 </html>

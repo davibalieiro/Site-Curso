@@ -1,57 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solução de Problemas</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Suporte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <h1>Solução de Problemas</h1>
-    </header>
-    <main>
-        <section class="troubleshooting-section">
-            <h2>Como Desativar a Aceleração de Hardware no Seu Navegador</h2>
-            <p>Se você estiver enfrentando problemas com a exibição de vídeos ou gráficos no seu navegador, pode ser útil desativar a aceleração de hardware. Siga os passos abaixo para desativá-la nos navegadores mais populares:</p>
-            
-            <h3>Google Chrome</h3>
-            <ol>
-                <li>Abra o Google Chrome.</li>
-                <li>Clique no ícone de três pontos no canto superior direito e selecione <strong>Configurações</strong>.</li>
-                <li>Role para baixo e clique em <strong>Avançado</strong>.</li>
-                <li>Na seção <strong>Sistema</strong>, desative a opção <strong>Usar aceleração de hardware quando disponível</strong>.</li>
-                <li>Reinicie o Chrome.</li>
-            </ol>
-
-            <h3>Mozilla Firefox</h3>
-            <ol>
-                <li>Abra o Mozilla Firefox.</li>
-                <li>Clique no ícone de três linhas no canto superior direito e selecione <strong>Opções</strong>.</li>
-                <li>Vá para a seção <strong>Desempenho</strong>.</li>
-                <li>Desmarque a opção <strong>Usar aceleração de hardware quando disponível</strong>.</li>
-                <li>Reinicie o Firefox.</li>
-            </ol>
-
-            <h3>Microsoft Edge</h3>
-            <ol>
-                <li>Abra o Microsoft Edge.</li>
-                <li>Clique no ícone de três pontos no canto superior direito e selecione <strong>Configurações</strong>.</li>
-                <li>Role para baixo e clique em <strong>Sistema</strong>.</li>
-                <li>Desative a opção <strong>Usar aceleração de hardware quando disponível</strong>.</li>
-                <li>Reinicie o Edge.</li>
-            </ol>
-
-            <h3>Safari</h3>
-            <ol>
-                <li>Abra o Safari.</li>
-                <li>Vá para <strong>Preferências</strong> no menu Safari.</li>
-                <li>Selecione a aba <strong>Avançado</strong>.</li>
-                <li>Marque a opção <strong>Mostrar o menu Desenvolvedor na barra de menus</strong>.</li>
-                <li>Vá para o menu <strong>Desenvolvedor</strong> e desmarque a opção <strong>Usar aceleração de hardware</strong>.</li>
-                <li>Reinicie o Safari.</li>
-            </ol>
-        </section>
-    </main>
+<body class="bg-gray-100 text-gray-900">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-6">Suporte ao Cliente</h1>
+        
+        <!-- Formulário de Contato -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Entre em Contato</h2>
+            <form>
+                <label class="block mb-2">Nome</label>
+                <input type="text" class="w-full p-2 border rounded mb-4" placeholder="Seu nome">
+                
+                <label class="block mb-2">E-mail</label>
+                <input type="email" class="w-full p-2 border rounded mb-4" placeholder="seuemail@example.com">
+                
+                <label class="block mb-2">Mensagem</label>
+                <textarea class="w-full p-2 border rounded mb-4" rows="4" placeholder="Descreva sua dúvida"></textarea>
+                
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enviar</button>
+            </form>
+        </div>
+        
+        <!-- FAQ -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Perguntas Frequentes</h2>
+            <div>
+                <button class="w-full text-left font-semibold py-2" onclick="toggleFAQ(1)">Como entro em contato com o suporte?</button>
+                <p id="faq1" class="hidden p-2 text-gray-700">Você pode entrar em contato pelo formulário acima ou pelo nosso e-mail suporte@empresa.com.</p>
+            </div>
+            <div>
+                <button class="w-full text-left font-semibold py-2" onclick="toggleFAQ(2)">Qual o horário de atendimento?</button>
+                <p id="faq2" class="hidden p-2 text-gray-700">Nosso atendimento funciona de segunda a sexta, das 9h às 18h.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleFAQ(id) {
+            const element = document.getElementById(`faq${id}`);
+            element.classList.toggle("hidden");
+        }
+    </script>
 </body>
 </html>

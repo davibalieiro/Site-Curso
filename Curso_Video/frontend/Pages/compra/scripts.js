@@ -45,14 +45,3 @@ window.onload = function() {
         console.error("Parâmetros não encontrados!");
     }
 };
-
-// Função para redirecionar para a página de compra com os parâmetros do curso
-function redirecionarParaCompra(nome, preco, descricao) {
-    window.location.href = "compra.html?curso=" + 
-        encodeURIComponent(nome) + "&preco=" + encodeURIComponent(preco) + "&descricao=" + encodeURIComponent(descricao);
-}
-// Função para redirecionar para a página de compra com os parâmetros do curso
-function redirecionarParaCompra(nome, preco, descricao) {
-    window.location.href = "/Site-Curso/Curso_Video/frontend/Pages/test/compra/Compra.html?curso=" + 
-        encodeURIComponent(nome) + "&preco=" + encodeURIComponent(preco) + "&descricao=" + encodeURIComponent(descricao);
-}

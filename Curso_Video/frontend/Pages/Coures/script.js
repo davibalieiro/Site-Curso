@@ -11,7 +11,7 @@ async function loadCourses(category = 'Todos') {
         // Exibe um texto de carregamento enquanto busca os cursos
         coursesContainer.innerHTML = '<p>Carregando cursos...</p>';
         
-        const response = await fetch('http://localhost:3001/api/courses');
+        const response = await fetch('http://localhost:3000/api/courses');
 
         if (!response.ok) {
             throw new Error('Falha ao carregar os cursos');

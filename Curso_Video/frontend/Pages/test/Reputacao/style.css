@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
     padding: 15px 0;
     text-align: center;
@@ -62,8 +62,8 @@ main {
 
 .btn-contact {
     display: inline-block;
-    background-color: #3498db;
-    color: white;
+    background: linear-gradient(135deg, #021b33, #12577b);
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;

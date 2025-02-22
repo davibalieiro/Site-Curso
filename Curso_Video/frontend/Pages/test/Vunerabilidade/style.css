@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
     padding: 15px 0;
     text-align: center;
@@ -54,7 +54,7 @@ main {
 }
 
 .btn-submit {
-    background-color: #3498db;
+    background-color: #4a7c9d;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -66,5 +66,5 @@ main {
 }
 
 .btn-submit:hover {
-    background-color: #2980b9;
+    background-color: #014a77;
 }

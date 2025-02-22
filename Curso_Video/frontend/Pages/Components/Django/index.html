@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de Django</title>
+    <title>Detalhes do Curso</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="curso-header">
-            <h1>Curso de Django</h1>
+            <h1 id="course-title">Detalhes do Curso</h1>
         </div>
     </header>
    
@@ -20,44 +20,24 @@
             <div class="content">
                 <section class="card">
                     <h2>O que você aprenderá</h2>
-                    <ul>
-                        <li>Fundamentos do Django e arquitetura MVC.</li>
-                        <li>Criação de aplicações web dinâmicas.</li>
-                        <li>Integração com bancos de dados utilizando ORM.</li>
-                        <li>Configuração de URLs e views no Django.</li>
-                        <li>Segurança e autenticação de usuários.</li>
+                    <ul id="course-learnings">
+                        <!-- Conteúdo será preenchido dinamicamente -->
                     </ul>
                 </section>
  
                 <section class="card">
                     <h2>Este curso inclui:</h2>
-                    <ul>
-                        <li><i class="fas fa-video"></i> 20 horas de vídeo sob demanda</li>
-                        <li><i class="fas fa-file-alt"></i> 15 artigos</li>
-                        <li><i class="fas fa-download"></i> 12 recursos para download</li>
-                        <li><i class="fas fa-tv"></i> Acesso no dispositivo móvel e na TV</li>
-                        <li><i class="fas fa-certificate"></i> Certificado de conclusão</li>
-                        <li><i class="fas fa-users"></i> Comunidade de suporte</li>
-                    </ul>
-                </section>
- 
-                <section class="card">
-                    <h2>Explorar mais Temas</h2>
-                    <ul>
-                        <li><a href="#">Python</a></li>
-                        <li><a href="#">Flask</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">API REST</a></li>
-                        <li><a href="#">Banco de Dados</a></li>
+                    <ul id="course-includes">
+                        <!-- Conteúdo será preenchido dinamicamente -->
                     </ul>
                 </section>
             </div>
  
             <aside class="compra-card">
                 <h2>Adquira agora</h2>
-                <img src="django-course.jpg" alt="Imagem representativa do curso">
-                <p>Preço: <strong>R$ 59,90</strong> <del>R$ 129,90</del></p>
-                <button onclick="window.location.href='#login'">Fazer login para comprar</button>
+                <img src="" alt="Imagem representativa do curso" id="course-image">
+                <p>Preço: <strong id="course-price"></strong></p>
+                <button onclick="window.location.href='/frontend/Pages/Auth/Dash/UserDashboard.html'">Fazer login para comprar</button>
                 <p><i class="fas fa-tag"></i> Aplique um cupom de desconto</p>
                 <input type="text" placeholder="Insira o cupom">
                 <button>Aplicar</button>
@@ -68,7 +48,9 @@
     </main>
    
     <footer>
-        <p>&copy; 2025 Curso de Django. Todos os direitos reservados.</p>
+        <p>&copy; 2025 DevAcademy. Todos os direitos reservados.</p>
     </footer>
+
+    <script src="detalhes.js"></script>
 </body>
 </html>
