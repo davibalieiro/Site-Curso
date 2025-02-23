@@ -1,8 +1,8 @@
 const wrapper = document.querySelector('.wrapper');
 const registerLink = document.querySelector('.register-link');
 const loginLink = document.querySelector('.login-link');
-const API_URL = 'http://localhost:3000'; 
-let token = null; 
+const API_URL = 'http://localhost:3000';
+let token = null;
 
 registerLink.onclick = () => {
     wrapper.classList.add('active');
@@ -15,11 +15,12 @@ loginLink.onclick = () => {
 function showMessage(message, isError = false) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = message;
-    messageDiv.style.color = isError ? 'red' : 'green';
-    messageDiv.style.display = 'block';
+    messageDiv.className = 'message'; // Reset classes
+    messageDiv.classList.add(isError ? 'error' : 'success');
+    messageDiv.classList.add('show');
 
     setTimeout(() => {
-        messageDiv.style.display = 'none';
+        messageDiv.classList.remove('show');
     }, 3000);
 }
 
@@ -54,6 +55,10 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         console.log('Resposta do servidor:', data); // Log para depuração
         if (response.ok) {
             showMessage('Usuário registrado com sucesso!');
+            if (!data.user.signup_date) {
+                data.user.signup_date = new Date().toISOString(); // Adiciona a data de cadastro se não estiver presente
+            }
+            localStorage.setItem('user', JSON.stringify(data.user));
             setTimeout(() => {
                 switchToLogin();
             }, 2000); // Redireciona após 2 segundos
@@ -72,7 +77,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('loginUsername').value; // Certifique-se de que é o campo de email
+    const email = document.getElementById('loginUsername').value;
     const password = document.getElementById('loginPassword').value;
 
     console.log('Enviando dados de login:', { email, password }); // Log para depuração
@@ -83,7 +88,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }), // Certifique-se de que está enviando email e password
+            body: JSON.stringify({ email, password }),
         });
 
         const data = await response.json();
@@ -95,7 +100,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(data.user));
 
-            window.location.href = './Dash/UserDashboard.html';
+            window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/Auth/Dash/UserDashboard.html';
         } else {
             showMessage(data.message || 'Credenciais inválidas', true);
         }

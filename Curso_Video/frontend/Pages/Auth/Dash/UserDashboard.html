@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel do Usuário</title>
     <link rel="stylesheet" href="dash.css"> <!-- Link para o seu CSS -->
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -33,37 +31,15 @@
         <section class="account-info">
             <h2>Meu Perfil</h2>
             <div class="user-details">
-                <p><strong>Nome:</strong> <span id="userName">João Silva</span></p>
-                <p><strong>Email:</strong> <span id="userEmail">joao.silva@example.com</span></p>
-                <p><strong>Data de Cadastro:</strong> <span id="userSignupDate">01/01/2023</span></p>
+                <p><strong>Nome:</strong> <span id="userName"></span></p>
+                <p> <strong>Email:</strong> <span id="userEmail"></span></p>
+                <p><strong>Data de Cadastro:</strong> <span id="userSignupDate"></span></p>
             </div>
         </section>
 
         <section class="progress-section">
             <h2>Progresso dos Cursos</h2>
-            <ul class="progress-list">
-                <li class="progress-item">
-                    <h3>Curso de HTML e CSS</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%;"></div>
-                    </div>
-                    <p>75% concluído</p>
-                </li>
-                <li class="progress-item">
-                    <h3>Curso de JavaScript</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 50%;"></div>
-                    </div>
-                    <p>50% concluído</p>
-                </li>
-                <li class="progress-item">
-                    <h3>Curso de React</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 25%;"></div>
-                    </div>
-                    <p>25% concluído</p>
-                </li>
-            </ul>
+            <ul class="progress-list"></ul>
         </section>
     </div>
 
@@ -77,7 +53,6 @@
         <p>&copy; 2025 Plataforma de Cursos - Todos os direitos reservados</p>
     </footer>
 
-    <script src="../userDashboard.js"></script>
+    <script src="./userDashboard.js"></script> <!-- Corrigir o caminho do script -->
 </body>
-
 </html>

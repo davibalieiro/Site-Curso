@@ -284,4 +284,31 @@ form .linkTxt{
     box-shadow: 0 6px 15px rgba(23, 5, 223, 0.3); /* Sombra mais intensa ao passar o mouse */
     transform: translateY(-2px); /* Leve elevação ao passar o mouse */
 }
- 
+.message {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.message.show {
+    display: block;
+    opacity: 1;
+}
+
+.message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    display: block;
+}
+
+.message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    display: block;
+}
