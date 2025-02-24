@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadCourses(); // Carrega os cursos ao carregar a página
-    setupFilters(); // Configura os filtros de categoria
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
+    loadCourses(searchTerm);
+    setupFilters();
 });
 
 // Função para carregar os cursos a partir da API
-async function loadCourses(category = 'Todos') {
+async function loadCourses(searchTerm = '', category = 'Todos') {
     try {
         const coursesContainer = document.querySelector('.courses-container');
         
@@ -22,10 +24,11 @@ async function loadCourses(category = 'Todos') {
         // Limpa o conteúdo atual
         coursesContainer.innerHTML = '';
 
-        // Filtra os cursos por categoria (se necessário)
-        const filteredCourses = category === 'Todos' 
-            ? courses 
-            : courses.filter(course => course.category === category);
+        // Filtra os cursos por termo de busca e categoria (se necessário)
+        const filteredCourses = courses.filter(course => {
+            return (category === 'Todos' || course.category === category) &&
+                   (!searchTerm || course.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        });
 
         // Exibe os cursos filtrados
         filteredCourses.forEach(course => {
@@ -71,13 +74,12 @@ async function loadCourses(category = 'Todos') {
 function redirecionarParaCompra(nome, preco, descricao) {
     window.location.href = "/Site-Curso/Curso_Video/frontend/Pages/compra/compra.html?curso=" + 
         encodeURIComponent(nome) + "&preco=" + encodeURIComponent(preco) + "&descricao=" + encodeURIComponent(descricao);
-  }
-  
-  // Função para redirecionar para a página de detalhes do curso
-  function verMais(nome) {
+}
+
+// Função para redirecionar para a página de detalhes do curso
+function verMais(nome) {
     window.location.href = `/Site-Curso/Curso_Video/frontend/Pages/Components/Django/index.html?curso=${encodeURIComponent(nome)}`;
-  }
-  
+}
 
 // Função para configurar os filtros de categoria
 function setupFilters() {
@@ -85,7 +87,7 @@ function setupFilters() {
     filterItems.forEach(item => {
         item.addEventListener('click', () => {
             const category = item.textContent;
-            loadCourses(category); // Recarrega os cursos com a categoria selecionada
+            loadCourses('', category); // Recarrega os cursos com a categoria selecionada
         });
     });
 }
