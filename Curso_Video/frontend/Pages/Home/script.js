@@ -6,20 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.querySelector('#search-button');
   const searchInput = document.querySelector('#search-input');
 
-  searchButton.addEventListener('click', () => {
-      searchCourses();
-  });
+  // Verifica se searchButton e searchInput existem antes de adicionar event listeners
+  if (searchButton && searchInput) {
+    searchButton.addEventListener('click', () => {
+        searchCourses();
+    });
 
-  searchInput.addEventListener('keypress', (event) => {
-      if (event.key === 'Enter') {
-          searchCourses();
-      }
-  });
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            searchCourses();
+        }
+    });
+  } else {
+    console.error("Elemento de pesquisa não encontrado no DOM");
+  }
 });
 
 // Função para buscar cursos (barra de pesquisa)
 function searchCourses() {
-  const searchTerm = document.querySelector('.search-bar input').value.toLowerCase();
+  const searchTerm = document.querySelector('#search-input').value.toLowerCase();
   window.location.href = `/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html?search=${encodeURIComponent(searchTerm)}`;
 }
 
@@ -135,7 +140,7 @@ function selectCategory(category) {
 localStorage.setItem('selectedCategory', category);
 window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html?category=' + encodeURIComponent(category);
 }
-// isso é uma grande bosta só da erro e nada funciona
+
 // Funções para o carrossel de imagens
 let currentIndex = 0;
 const images = document.querySelectorAll('.carousel img');
@@ -224,23 +229,23 @@ setTimeout(() => {
 }, 1000);
 }
 
-    // Função para rolar até o topo da página
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+// Função para rolar até o topo da página
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    // Exibir ou ocultar o botão de rolar ao topo com base na posição da rolagem
-    window.addEventListener('scroll', () => {
-        const scrollToTopButton = document.querySelector('.scroll-to-top');
-        if (window.scrollY > 200) {
-            scrollToTopButton.style.display = 'block';
-        } else {
-            scrollToTopButton.style.display = 'none';
-        }
-    });
-
-    // Adiciona evento de clique ao botão
+// Exibir ou ocultar o botão de rolar ao topo com base na posição da rolagem
+window.addEventListener('scroll', () => {
     const scrollToTopButton = document.querySelector('.scroll-to-top');
-    if (scrollToTopButton) {
-        scrollToTopButton.addEventListener('click', scrollToTop);
-    };
+    if (window.scrollY > 200) {
+        scrollToTopButton.style.display = 'block';
+    } else {
+        scrollToTopButton.style.display = 'none';
+    }
+});
+
+// Adiciona evento de clique ao botão
+const scrollToTopButton = document.querySelector('.scroll-to-top');
+if (scrollToTopButton) {
+    scrollToTopButton.addEventListener('click', scrollToTop);
+}

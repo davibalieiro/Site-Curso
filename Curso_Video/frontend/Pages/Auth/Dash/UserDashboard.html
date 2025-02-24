@@ -18,21 +18,60 @@
             <a href="/Site-Curso/Curso_Video/frontend/Pages/Home/Home.html">Início</a>
             <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
         </div>
+        <button id="menuToggle" class="menu-toggle">☰ Menu</button>
     </header>
+    
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#userInfo">Meu Perfil</a></li>
+                <li><a href="#courseProgress">Meus Cursos</a></li>
+                <li><a href="#notifications">Notificações</a></li>
+                <li><a href="#achievements">Conquistas</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-    <div id="userInfo">
-        <section class="account-info">
-            <h2>Meu Perfil</h2>
-            <div class="user-details">
-                <p><strong>Nome:</strong> <span id="userName"></span></p>
-                <p> <strong>Email:</strong> <span id="userEmail"></span></p>
-                <p><strong>Data de Cadastro:</strong> <span id="userSignupDate"></span></p>
-            </div>
-        </section>
+    <div id="content">
+        <div id="userInfo">
+            <section class="account-info">
+                <h2>Meu Perfil</h2>
+                <div class="profile-pic">
+                    <img id="profileImage" src="default-profile.png" alt="Foto de Perfil">
+                    <input type="file" id="uploadImage" style="display: none;">
+                </div>
+                <div class="user-details">
+                    <p><strong>Nome:</strong> <span id="userName"></span></p>
+                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                    <p><strong>Data de Cadastro:</strong> <span id="userSignupDate"></span></p>
+                    <button id="editProfileBtn">Editar Perfil</button>
+                </div>
+            </section>
+        </div>
 
-        <section class="progress-section">
+        <section id="courseProgress" class="progress-section">
             <h2>Progresso dos Cursos</h2>
             <ul class="progress-list"></ul>
+        </section>
+
+        <section id="courseHistory" class="history-section">
+            <h2>Histórico de Cursos</h2>
+            <ul class="history-list"></ul>
+        </section>
+
+        <section id="courseFeedback" class="feedback-section">
+            <h2>Avalie os Cursos</h2>
+            <ul class="feedback-list"></ul>
+        </section>
+
+        <section id="notifications" class="notifications-section">
+            <h2>Notificações</h2>
+            <ul class="notifications-list"></ul>
+        </section>
+
+        <section id="achievements" class="achievements-section">
+            <h2>Conquistas</h2>
+            <ul class="achievements-list"></ul>
         </section>
     </div>
 
