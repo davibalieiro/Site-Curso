@@ -498,3 +498,20 @@ footer .footer-links a:hover {
   color: #888;
   font-style: italic;
 }
+/* Estilos do botão para rolar ao topo */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #12577B;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: none;
+}
+
+.scroll-to-top:hover {
+  background-color: #3cb1f5;
+}

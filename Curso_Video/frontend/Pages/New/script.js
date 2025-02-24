@@ -37,12 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Adiciona evento de input ao campo de busca
-    const searchInput = document.querySelector('.search-bar input');
-    if (searchInput) {
-        searchInput.addEventListener('input', filterNews);
-    }
-
     // Função para animar os cartões ao entrar na tela
     function animateCardsOnScroll() {
         const cards = document.querySelectorAll('.cards-container .card');

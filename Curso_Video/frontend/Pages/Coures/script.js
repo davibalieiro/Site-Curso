@@ -3,6 +3,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchTerm = urlParams.get('search');
     loadCourses(searchTerm);
     setupFilters();
+
+    // Função para rolar até o topo da página
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Exibir ou ocultar o botão de rolar ao topo com base na posição da rolagem
+    window.addEventListener('scroll', () => {
+        const scrollToTopButton = document.querySelector('.scroll-to-top');
+        if (window.scrollY > 200) {
+            scrollToTopButton.style.display = 'block';
+        } else {
+            scrollToTopButton.style.display = 'none';
+        }
+    });
+
+    // Adiciona evento de clique ao botão
+    const scrollToTopButton = document.querySelector('.scroll-to-top');
+    if (scrollToTopButton) {
+        scrollToTopButton.addEventListener('click', scrollToTop);
+    }
 });
 
 // Função para carregar os cursos a partir da API
