@@ -30,8 +30,45 @@ const db = mysql.createPool({
             ) ENGINE=INNODB;
         `);
         console.log('Tabela "users" criada ou já existente.');
+
+        await db.query(`
+            CREATE TABLE IF NOT EXISTS courses (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                category VARCHAR(255),
+                price DECIMAL(10, 2),
+                rating DECIMAL(3, 2),
+                image_url VARCHAR(255),
+                is_best_seller BOOLEAN,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            ) ENGINE=INNODB;
+        `);
+        console.log('Tabela "courses" criada ou já existente.');
+
+        await db.query(`
+            CREATE TABLE IF NOT EXISTS home (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                course_id INT NOT NULL,
+                position INT NOT NULL,
+                FOREIGN KEY (course_id) REFERENCES courses(id)
+            ) ENGINE=INNODB;
+        `);
+        console.log('Tabela "home" criada ou já existente.');
+
+        await db.query(`
+            CREATE TABLE IF NOT EXISTS news (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                title VARCHAR(255) NOT NULL,
+                content TEXT NOT NULL,
+                image_url VARCHAR(255),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            ) ENGINE=INNODB;
+        `);
+        console.log('Tabela "news" criada ou já existente.');
     } catch (error) {
-        console.error('Erro ao criar tabela:', error);
+        console.error('Erro ao criar tabelas:', error);
     }
 })();
 
@@ -44,31 +81,26 @@ app.use(cors());
 // Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-
 app.use(bodyParser.json());
 
 // Rota de Registro
 app.post('/register', async (req, res) => {
-    console.log('Corpo da requisição:', req.body); // Log do corpo da requisição
     const { name, email, password } = req.body;
 
     // Verificação dos campos obrigatórios
     if (!name || !email || !password) {
-        console.log('Campos obrigatórios faltando'); // Log para depuração
         return res.status(400).json({ message: 'Preencha todos os campos obrigatórios' });
     }
 
     try {
         const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
         if (users.length > 0) {
-            console.log('Usuário já existe'); // Log para depuração
             return res.status(400).json({ message: 'Usuário já existe' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
         await db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword]);
-        console.log('Novo usuário registrado:', { name, email });
 
         res.status(201).json({ message: 'Usuário registrado com sucesso' });
     } catch (error) {
@@ -80,20 +112,15 @@ app.post('/register', async (req, res) => {
 // Rota de Login
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    console.log('Tentativa de login:', { email, password }); // Log para depuração
 
     try {
         const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
         if (users.length === 0) {
-            console.log('Usuário não encontrado'); // Log para depuração
             return res.status(401).json({ message: 'Credenciais inválidas' });
         }
 
         const user = users[0];
-        console.log('Usuário encontrado:', user); // Log para depuração
-
         const passwordMatch = await bcrypt.compare(password, user.password);
-        console.log('Senha corresponde:', passwordMatch); // Log para depuração
 
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
@@ -175,6 +202,74 @@ app.get('/course-details', async (req, res) => {
     } catch (error) {
         console.error('Erro ao buscar detalhes do curso:', error);
         res.status(500).send('Erro ao buscar detalhes do curso');
+    }
+});
+
+// Rota para criar notícia
+app.post('/api/news', async (req, res) => {
+    const { title, content, image_url } = req.body;
+
+    try {
+        await db.query('INSERT INTO news (title, content, image_url) VALUES (?, ?, ?)', [title, content, image_url]);
+        res.status(201).json({ message: 'Notícia criada com sucesso' });
+    } catch (error) {
+        console.error('Erro ao criar notícia:', error);
+        res.status(500).json({ message: 'Erro ao criar notícia' });
+    }
+});
+
+// Rota para obter todas as notícias
+app.get('/api/news', async (req, res) => {
+    try {
+        const [results] = await db.query('SELECT * FROM news');
+        res.json(results);
+    } catch (error) {
+        console.error('Erro ao buscar notícias:', error);
+        res.status(500).json({ message: 'Erro ao buscar notícias' });
+    }
+});
+
+// Rota para obter uma notícia por ID
+app.get('/api/news/:id', async (req, res) => {
+    const newsId = req.params.id;
+
+    try {
+        const [results] = await db.query('SELECT * FROM news WHERE id = ?', [newsId]);
+        if (results.length === 0) {
+            res.status(404).json({ message: 'Notícia não encontrada' });
+            return;
+        }
+        res.json(results[0]);
+    } catch (error) {
+        console.error('Erro ao buscar notícia:', error);
+        res.status(500).json({ message: 'Erro ao buscar notícia' });
+    }
+});
+
+// Rota para atualizar uma notícia
+app.put('/api/news/:id', async (req, res) => {
+    const newsId = req.params.id;
+    const { title, content, image_url } = req.body;
+
+    try {
+        await db.query('UPDATE news SET title = ?, content = ?, image_url = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [title, content, image_url, newsId]);
+        res.json({ message: 'Notícia atualizada com sucesso' });
+    } catch (error) {
+        console.error('Erro ao atualizar notícia:', error);
+        res.status(500).json({ message: 'Erro ao atualizar notícia' });
+    }
+});
+
+// Rota para deletar uma notícia
+app.delete('/api/news/:id', async (req, res) => {
+    const newsId = req.params.id;
+
+    try {
+        await db.query('DELETE FROM news WHERE id = ?', [newsId]);
+        res.json({ message: 'Notícia deletada com sucesso' });
+    } catch (error) {
+        console.error('Erro ao deletar notícia:', error);
+        res.status(500).json({ message: 'Erro ao deletar notícia' });
     }
 });
 

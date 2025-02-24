@@ -145,11 +145,13 @@ footer .footer-links a:hover {
 .featured-content h2 {
     color: #021B33;
     margin-bottom: 10px;
+    font-size: 38px;
 }
 
 .featured-content p {
     color: #666;
     margin-bottom: 15px;
+    font-size: 20px;
 }
 
 .featured-content .read-more {

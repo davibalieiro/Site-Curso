@@ -20,22 +20,53 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollToTopButton.addEventListener('click', scrollToTop);
     }
 
-    // Função para filtrar as notícias
-    function filterNews() {
-        const searchInput = document.querySelector('.search-bar input');
-        const filter = searchInput.value.toLowerCase();
-        const cards = document.querySelectorAll('.cards-container .card');
+    // Função para carregar notícias do banco de dados
+    function loadNews() {
+        fetch('http://localhost:3000/api/news')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar notícias');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const featuredNewsContainer = document.getElementById('featured-news-container');
+                const newsCardsContainer = document.getElementById('news-cards-container');
 
-        cards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
-            if (title.includes(filter) || description.includes(filter)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
+                // Exibir a primeira notícia como destaque
+                if (data.length > 0) {
+                    const featuredNews = data[0];
+                    featuredNewsContainer.innerHTML = `
+                        <div class="featured-card">
+                            <img src="${featuredNews.image_url}" alt="${featuredNews.title}">
+                            <div class="featured-content">
+                                <h2>${featuredNews.title}</h2>
+                                <p>${featuredNews.content}</p>
+                                <a href="#" class="read-more">Leia mais</a>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Exibir as demais notícias
+                data.slice(1).forEach(news => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    card.innerHTML = `
+                        <img src="${news.image_url}" alt="${news.title}">
+                        <div class="card-content">
+                            <h3>${news.title}</h3>
+                            <p>${news.content}</p>
+                            <a href="#" class="read-more">Leia mais</a>
+                        </div>
+                    `;
+                    newsCardsContainer.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Erro ao buscar notícias:', error));
     }
+
+    loadNews();
 
     // Função para animar os cartões ao entrar na tela
     function animateCardsOnScroll() {
