@@ -5,106 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dúvidas Frequentes - DevAcademy</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .faq-section {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .faq-item {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            padding: 15px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .faq-item:hover {
-            background: #f9f9f9;
-        }
-        .faq-answer {
-            display: none;
-            padding-top: 10px;
-            color: #333;
-        }
-        .faq-title {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-    </style>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="/frontend/Img/LogoTipo.png" alt="Ícone da Plataforma">
-        </div>
-        <div>
-            <h1>DevAcademy</h1>
-        </div>
-        <div class="navbar">
-            <a href="#">Início</a>
-            <a href="/frontend/Pages/Coures/coures.html">Cursos</a>
-            <a href="/frontend/Pages/New/new.html">Notícias</a>
-            <a href="../Auth/Dash/UserDashboard.html">Conta</a>
-        </div>
+        <h1>Dúvidas Frequentes</h1>
+        <p>Encontre respostas para as principais perguntas sobre nossos cursos</p>
     </header>
 
-    <section class="faq-section">
-        <h2 class="faq-title">Dúvidas Frequentes</h2>
-        <div class="faq-container">
-            <div class="faq-item" onclick="toggleFAQ(1)">
-                <strong>Como faço para alterar minha senha?</strong>
-                <div class="faq-answer" id="faq-answer-1">Para alterar sua senha, vá até as configurações da conta e clique em 'Alterar Senha'.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(2)">
-                <strong>Quais formas de pagamento são aceitas?</strong>
-                <div class="faq-answer" id="faq-answer-2">Aceitamos cartões de crédito, débito, PayPal e PIX.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(3)">
-                <strong>Posso cancelar meu pedido?</strong>
-                <div class="faq-answer" id="faq-answer-3">Sim, você pode cancelar seu pedido antes do envio. Entre em contato com o suporte para mais detalhes.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(4)">
-                <strong>Os cursos possuem certificado?</strong>
-                <div class="faq-answer" id="faq-answer-4">Sim, todos os cursos oferecem certificado de conclusão ao final.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(5)">
-                <strong>Por quanto tempo terei acesso ao curso?</strong>
-                <div class="faq-answer" id="faq-answer-5">O acesso é vitalício, podendo ser assistido sempre que quiser.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(6)">
-                <strong>Os cursos têm garantia?</strong>
-                <div class="faq-answer" id="faq-answer-6">Sim, oferecemos uma garantia de 7 dias para reembolso caso não fique satisfeito.</div>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section class="faq-section">
+            <h2 class="faq-title">Dúvidas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFAQ(1)">
+                    <strong>Como faço para alterar minha senha?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-1">
+                    Para alterar sua senha, vá até as configurações da conta e clique em 'Alterar Senha'.
+                </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="/frontend/Pages/Public/Sobre/sobre.html">Sobre</a>
-            <a href="/frontend/Pages/Public/Contato/idex.html">Contato</a>
-            <a href="/frontend/Pages/Public/Termos_De_Uso/index.html">Termos de Uso</a>
-            <a href="/frontend/Pages/Public/Privac/privc.html">Privacidade</a>
-        </div>
-        <p>&copy; 2025 DevAcademy - Todos os direitos reservados</p>
-    </footer>
+                <div class="faq-item" onclick="toggleFAQ(2)">
+                    <strong>Quais formas de pagamento são aceitas?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-2">
+                    Aceitamos cartões de crédito, débito, PayPal e PIX.
+                </div>
 
-    <script>
-        function toggleFAQ(index) {
-            let answer = document.getElementById('faq-answer-' + index);
-            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
+                <div class="faq-item" onclick="toggleFAQ(3)">
+                    <strong>Posso cancelar meu pedido?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-3">
+                    Sim, você pode cancelar seu pedido antes do envio. Entre em contato com o suporte para mais detalhes.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(4)">
+                    <strong>Os cursos possuem certificado?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-4">
+                    Sim, todos os cursos oferecem certificado de conclusão ao final.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(5)">
+                    <strong>Por quanto tempo terei acesso ao curso?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-5">
+                    O acesso é vitalício, podendo ser assistido sempre que quiser.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(6)">
+                    <strong>Os cursos têm garantia?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-6">
+                    Sim, oferecemos uma garantia de 7 dias para reembolso caso não fique satisfeito.
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(7)">
+                    <strong>Como posso entrar em contato com o suporte?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-7">
+                    Você pode entrar em contato com o suporte através do nosso formulário de contato ou pelo email suporte@devacademy.com.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(8)">
+                    <strong>Há pré-requisitos para os cursos?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-8">
+                    A maioria dos nossos cursos não possui pré-requisitos, mas recomendamos verificar a descrição do curso para mais detalhes.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(9)">
+                    <strong>Os cursos são ao vivo ou gravados?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-9">
+                    Nossos cursos são gravados para que você possa assistir no seu próprio ritmo. Também oferecemos sessões ao vivo para tirar dúvidas.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(10)">
+                    <strong>Posso acessar o curso em dispositivos móveis?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-10">
+                    Sim, nossos cursos são compatíveis com dispositivos móveis e podem ser acessados de qualquer lugar.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(11)">
+                    <strong>Como posso obter um reembolso?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-11">
+                    Para solicitar um reembolso, entre em contato com o suporte dentro do período de garantia de 7 dias após a compra.
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(12)">
+                    <strong>Os cursos são atualizados regularmente?</strong>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-12">
+                    Sim, nossos cursos são atualizados regularmente para garantir que o conteúdo esteja sempre atualizado com as últimas tendências e tecnologias.
+                </div>
+            </div>
+        </section>
+
+        <a href="contato.html" class="btn-contact">Entre em Contato Conosco</a>
+    </main>
 </body>
 </html>

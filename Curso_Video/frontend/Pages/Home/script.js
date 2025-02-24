@@ -135,7 +135,7 @@ function selectCategory(category) {
 localStorage.setItem('selectedCategory', category);
 window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html?category=' + encodeURIComponent(category);
 }
-
+// isso é uma grande bosta só da erro e nada funciona
 // Funções para o carrossel de imagens
 let currentIndex = 0;
 const images = document.querySelectorAll('.carousel img');
@@ -200,7 +200,7 @@ setTimeout(() => {
 
   if (option === 'Reputação') {
     botResponse.innerText = 'Você escolheu Reputação. Redirecionando para a página de Reputação...';
-    setTimeout(() => { window.location.href = 'reputacao.html'; }, 1500);
+    setTimeout(() => { window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/test/Reputacao/Home.html'; }, 1500);
   } else if (option === 'Perfil') {
     botResponse.innerText = 'Você escolheu Perfil. Redirecionando para a página de Perfil...';
     setTimeout(() => { window.location.href = 'perfil.html'; }, 1500);

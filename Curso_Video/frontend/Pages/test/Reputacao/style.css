@@ -9,7 +9,7 @@ body {
 header {
     background: linear-gradient(135deg, #021b33, #12577b);
     color: white;
-    padding: 15px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -18,29 +18,23 @@ main {
     margin-top: 20px;
 }
 
-.testimonials-section,
-.ratings-section,
-.certifications-section,
-.partners-section,
-.faq-section,
-.differentials-section,
-.contact-section {
+section {
     margin-top: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.testimonials,
-.partners,
-.certifications {
+.testimonials, .certifications, .blog-posts, .free-courses, .projects, .webinars, .team, .events {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.testimonial,
-.partner,
-.certification {
-    background-color: white;
+.testimonial, .certification, .blog-post, .free-course, .project, .webinar, .team-member, .event {
+    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -48,9 +42,7 @@ main {
     min-width: 280px;
 }
 
-.testimonial p,
-.partner p,
-.certification p {
+.testimonial p, .certification p, .blog-post p, .free-course p, .project p, .webinar p, .team-member p, .event p {
     font-size: 16px;
     color: #555;
 }
@@ -60,26 +52,77 @@ main {
     color: #f39c12;
 }
 
-.btn-contact {
+.btn-contact, .btn-chat {
     display: inline-block;
     background: linear-gradient(135deg, #021b33, #12577b);
-    color: rgb(255, 255, 255);
-    padding: 10px 20px;
+    color: white;
+    padding: 12px 24px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 5px;
+    text-align: center;
+    display: block;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.faq {
-    margin-top: 40px;
+.btn-contact:hover, .btn-chat:hover {
+    background: linear-gradient(135deg, #12577b, #021b33);
 }
 
-.faq ul {
-    list-style: none;
-    padding: 0;
+details {
+    margin-bottom: 10px;
 }
 
-.faq li {
-    margin: 10px 0;
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="email"], textarea, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #12577b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #021b33;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 5px 10px;
+    text-decoration: none;
+    color: #12577b;
+    font-size: 18px;
+}
+
+.social-media a:hover {
+    color: #021b33;
 }

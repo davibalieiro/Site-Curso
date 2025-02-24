@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(135deg, #021b33, #12577b);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+main {
+    padding: 40px 10%;
+    margin-top: 20px;
+}
+.faq-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #021b33;
+    margin-bottom: 25px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #12577b;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+.faq-item:hover {
+    background-color: #eef7ff;
+}
+
+.faq-toggle {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+    color: #12577b;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.3s ease-in-out;
+    font-size: 16px;
+    color: #555;
+    background-color: #f0f8ff;
+    border-left: 4px solid #12577b;
+    padding: 0 15px;
+    border-radius: 5px;
+}
+
+.faq-answer.show {
+    max-height: 200px;
+    padding: 15px;
+}
+
+.btn-contact {
+    display: inline-block;
+    background: linear-gradient(135deg, #021b33, #12577b);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: max-content;
+    margin: 20px auto 0;
+}
+
+.btn-contact:hover {
+    background: linear-gradient(135deg, #12577b, #021b33);
+}
