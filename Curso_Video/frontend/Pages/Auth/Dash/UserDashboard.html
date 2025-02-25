@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevAcademy</title>
     <link rel="stylesheet" href="dash.css"> <!-- Link para o seu CSS -->
+    <script defer src="userDashboard.js"></script> <!-- Defer script para garantir que o DOM esteja carregado -->
 </head>
 <body>
     <header>
@@ -17,29 +18,30 @@
         <div class="navbar">
             <a href="/Site-Curso/Curso_Video/frontend/Pages/Home/Home.html">Início</a>
             <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
+            <div class="notifications-dropdown" id="notificationsDropdown">
+                <ul class="notifications-list"></ul>
+            </div>
         </div>
         <button id="menuToggle" class="menu-toggle">☰ Menu</button>
     </header>
     
     <aside class="sidebar">
-        <nav>
-            <ul>
-                <li><a href="#userInfo">Meu Perfil</a></li>
-                <li><a href="#courseProgress">Meus Cursos</a></li>
-                <li><a href="#notifications">Notificações</a></li>
-                <li><a href="#achievements">Conquistas</a></li>
-            </ul>
-        </nav>
+        <div class="sidebar-logo">
+            <img src="/Site-Curso/Curso_Video/frontend/Img/LogoTipo.png" alt="Ícone da Plataforma">
+            <aside class="sidebar">
+                    <ul>
+                        <li><a href="#userInfo">Meu Perfil</a></li>
+                        <li><a href="#courseProgress">Meus Cursos</a></li>
+                        <li><a href="#notifications">Notificações</a></li>
+                        <li><a href="#achievements">Conquistas</a></li>
+                    </ul>
+        </div>
     </aside>
 
     <div id="content">
         <div id="userInfo">
             <section class="account-info">
                 <h2>Meu Perfil</h2>
-                <div class="profile-pic">
-                    <img id="profileImage" src="default-profile.png" alt="Foto de Perfil">
-                    <input type="file" id="uploadImage" style="display: none;">
-                </div>
                 <div class="user-details">
                     <p><strong>Nome:</strong> <span id="userName"></span></p>
                     <p><strong>Email:</strong> <span id="userEmail"></span></p>
@@ -49,30 +51,60 @@
             </section>
         </div>
 
-        <section id="courseProgress" class="progress-section">
-            <h2>Progresso dos Cursos</h2>
-            <ul class="progress-list"></ul>
-        </section>
+        <div class="section" id="courseProgressSection">
+            <h2 class="section-title">Progresso dos Cursos</h2>
+            <div class="section-content" id="courseProgressContent">
+                <ul class="progress-list">
+                    <li>Curso de HTML e CSS - 75% concluído</li>
+                    <li>Curso de JavaScript - 50% concluído</li>
+                    <li>Curso de React - 25% concluído</li>
+                </ul>
+            </div>
+        </div>
 
-        <section id="courseHistory" class="history-section">
-            <h2>Histórico de Cursos</h2>
-            <ul class="history-list"></ul>
-        </section>
+        <div class="section" id="courseHistorySection">
+            <h2 class="section-title">Histórico de Cursos</h2>
+            <div class="section-content" id="courseHistoryContent">
+                <ul class="history-list">
+                    <li>Curso de HTML e CSS - Concluído em 15/01/2025</li>
+                    <li>Curso de JavaScript - Concluído em 20/01/2025</li>
+                    <li>Curso de React - Concluído em 10/02/2025</li>
+                </ul>
+            </div>
+        </div>
 
-        <section id="courseFeedback" class="feedback-section">
-            <h2>Avalie os Cursos</h2>
-            <ul class="feedback-list"></ul>
-        </section>
+        <div class="section" id="courseFeedbackSection">
+            <h2 class="section-title">Avalie os Cursos</h2>
+            <div class="section-content" id="courseFeedbackContent">
+                <ul class="feedback-list">
+                    <li>Curso de HTML e CSS - Avaliação: 4 estrelas - Comentário: "Ótimo curso!"</li>
+                    <li>Curso de JavaScript - Avaliação: 5 estrelas - Comentário: "Muito bom, recomendo!"</li>
+                    <li>Curso de React - Avaliação: 3 estrelas - Comentário: "Bom, mas pode melhorar."</li>
+                </ul>
+            </div>
+        </div>
 
-        <section id="notifications" class="notifications-section">
-            <h2>Notificações</h2>
-            <ul class="notifications-list"></ul>
-        </section>
+        <div class="section" id="projectsSection">
+            <h2 class="section-title">Projetos</h2>
+            <div class="section-content" id="projectsContent">
+                <ul class="projects-list">
+                    <li>Projeto Angular - Aplicação web desenvolvida com Angular.</li>
+                    <li>Projeto MongoDB - Banco de dados NoSQL utilizando MongoDB.</li>
+                    <li>Projeto Java - Aplicação backend desenvolvida com Java.</li>
+                </ul>
+            </div>
+        </div>
 
-        <section id="achievements" class="achievements-section">
-            <h2>Conquistas</h2>
-            <ul class="achievements-list"></ul>
-        </section>
+        <div class="section" id="achievementsSection">
+            <h2 class="section-title">Conquistas</h2>
+            <div class="section-content" id="achievementsContent">
+                <ul class="achievements-list">
+                    <li>Concluiu o curso de HTML e CSS</li>
+                    <li>Primeiro acesso à plataforma</li>
+                    <li>Concluiu 50% do curso de JavaScript</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -84,7 +116,5 @@
         </div>
         <p>&copy; 2025 Plataforma de Cursos - Todos os direitos reservados</p>
     </footer>
-
-    <script src="./userDashboard.js"></script> <!-- Corrigir o caminho do script -->
 </body>
 </html>

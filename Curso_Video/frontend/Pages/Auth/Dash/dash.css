@@ -35,6 +35,11 @@ header .logo img {
     filter: brightness(0) invert(1);
 }
 
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
 .navbar a {
     color: white;
     text-decoration: none;
@@ -45,6 +50,48 @@ header .logo img {
 
 .navbar a:hover {
     color: #A9CFE5;
+}
+
+.notifications-icon {
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.notifications-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.notifications-dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-list {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.notifications-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.notifications-list li:last-child {
+    border-bottom: none;
+}
+
+.notifications-list li p {
+    margin: 0;
 }
 
 /* Estilos do botão de menu */
@@ -80,169 +127,8 @@ footer .footer-links a:hover {
     color: #A9CFE5;
 }
 
-/* Estilos do chat de suporte */
-.chat-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #12577B;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.chat-button:hover {
-    background-color: #A9CFE5;
-}
-
-/* Estilos da janela de chat */
-.chat-window {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 30px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 300px;
-    height: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-}
-
-.chat-header {
-    background-color: #12577B;
-    color: white;
-    padding: 10px;
-    border-radius: 8px 8px 0 0;
-    text-align: center;
-    position: relative;
-}
-
-.chat-header button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.chat-messages {
-    height: 300px;
-    overflow-y: scroll;
-    margin: 10px 0;
-    padding-right: 10px;
-}
-
-.chat-input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chat-input input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-}
-
-.chat-input button {
-    background-color: #12577B;
-    color: white;
-    padding: 10px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-}
-
-.chat-input button:hover {
-    background-color: #A9CFE5;
-}
-
-.message {
-    padding: 8px;
-    margin: 5px 0;
-}
-
-.user-message {
-    background-color: #A9CFE5;
-    color: white;
-    text-align: right;
-    border-radius: 10px;
-}
-
-.bot-message {
-    background-color: #E5E5E5;
-    color: #333;
-    text-align: left;
-    border-radius: 10px;
-}
-
-/* Estilos do modal de categorias */
-.category-modal {
-    display: none;
-    position: fixed;
-    top: 80px; /* Ajuste a posição para estar mais próxima do botão de categorias */
-    left: 880px; /* Ajuste a posição para estar mais próxima do botão de categorias */
-    width: 300px;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-}
-
-.modal-content h3 {
-    margin-bottom: 20px;
-    color: #021B33;
-}
-
-.modal-content ul {
-    list-style: none;
-    padding: 0;
-}
-
-.modal-content ul li {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #021B33;
-    cursor: pointer;
-}
-
-.modal-content ul li:hover {
-    color: #12577B;
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Estilos da seção de informações da conta */
-.account-info {
+/* Estilos das seções */
+.section {
     background-color: white;
     border-radius: 8px;
     padding: 20px;
@@ -250,45 +136,15 @@ footer .footer-links a:hover {
     margin: 20px;
 }
 
-.account-info h2 {
+.section h2 {
     color: #021B33;
-    margin-bottom: 15px;
 }
 
-.profile-pic {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.profile-pic img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.account-info p {
-    color: #666;
-    font-size: 14px;
-    margin: 5px 0;
+.section-content {
+    margin-top: 20px;
 }
 
 /* Estilos da seção de progresso */
-.progress-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-
-.progress-section h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-}
-
 .progress-list {
     list-style: none;
     padding: 0;
@@ -324,19 +180,6 @@ footer .footer-links a:hover {
 }
 
 /* Estilos da seção de histórico */
-.history-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-
-.history-section h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-}
-
 .history-list {
     list-style: none;
     padding: 0;
@@ -355,19 +198,6 @@ footer .footer-links a:hover {
 }
 
 /* Estilos da seção de feedback */
-.feedback-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-
-.feedback-section h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-}
-
 .feedback-list {
     list-style: none;
     padding: 0;
@@ -405,37 +235,6 @@ footer .footer-links a:hover {
     color: #f5b301;
 }
 
-/* Estilos da seção de notificações */
-.notifications-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-
-.notifications-section h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-}
-
-.notifications-list {
-    list-style: none;
-    padding: 0;
-}
-
-.notification-item {
-    background-color: #E5E5E5;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #021B33;
-}
-
-.notification-item p {
-    margin: 0;
-}
-
 /* Estilos da seção de conquistas */
 .achievements-section {
     background-color: white;
@@ -467,6 +266,42 @@ footer .footer-links a:hover {
     margin: 0;
 }
 
+.achievement-details {
+    background-color: #F7F7F7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-details p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #021B33;
+}
+
+/* Estilos da seção de projetos */
+.projects-list {
+    list-style: none;
+    padding: 0;
+}
+
+.project-item {
+    background-color: #E5E5E5;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #021B33;
+}
+
+.project-item h3 {
+    margin-bottom: 5px;
+}
+
+.project-item p {
+    margin: 0;
+}
+
 /* Estilos do menu lateral fixo */
 .sidebar {
     position: fixed;
@@ -479,6 +314,16 @@ footer .footer-links a:hover {
     padding-top: 60px;
     transition: left 0.3s;
     z-index: 10;
+}
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo img {
+    width: 100px;
+    height: 100px;
 }
 
 .sidebar.show {
@@ -514,4 +359,53 @@ footer .footer-links a:hover {
 
 .sidebar.show + #content {
     margin-left: 200px;
+}
+
+/* Estilos adicionais para seções clicáveis */
+.expanded .section-content {
+    display: block;
+}
+
+/* Estilos da seção de informações da conta */
+.account-info {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.account-info h2 {
+    color: #021B33;
+    margin-bottom: 15px;
+    flex-basis: 100%;
+}
+
+.user-details {
+    flex-basis: 100%;
+}
+
+.user-details p {
+    color: #666;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.user-details button {
+    background-color: #12577B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.user-details button:hover {
+    background-color: #A9CFE5;
 }

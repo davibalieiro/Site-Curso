@@ -208,21 +208,14 @@ setTimeout(() => {
     setTimeout(() => { window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/test/Reputacao/Home.html'; }, 1500);
   } else if (option === 'Perfil') {
     botResponse.innerText = 'Você escolheu Perfil. Redirecionando para a página de Perfil...';
-    setTimeout(() => { window.location.href = 'perfil.html'; }, 1500);
-  } else if (option === 'Sugestão de Curso') {
-    botResponse.innerText = 'Você escolheu Sugestão de Curso. Redirecionando para a página de Sugestões de Curso...';
-    setTimeout(() => { window.location.href = 'sugestao-curso.html'; }, 1500);
+    setTimeout(() => { window.location.href = '\Site-Curso\Curso_Video\frontend\Pages\Auth\Dash\UserDashboard.html'; }, 1500);
   } else if (option === 'Perguntas Frequentes') {
     botResponse.innerText = 'Você escolheu Perguntas Frequentes. Redirecionando para o FAQ...';
-    setTimeout(() => { window.location.href = 'faq.html'; }, 1500);
-  } else if (option === 'Solução de problemas: como desativar a aceleração de hardware no seu navegador') {
+    setTimeout(() => { window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/test/Perguntas/index.html'; }, 1500);
+  } else if (option === 'Solução de problemas') {
     botResponse.innerText = 'Você escolheu Solução de problemas. Redirecionando...';
-    setTimeout(() => { window.location.href = 'solucao-problemas.html'; }, 1500);
-  } else if (option === 'Relatar Vulnerabilidade de Segurança') {
-    botResponse.innerText = 'Você escolheu Relatar Vulnerabilidade de Segurança. Redirecionando...';
-    setTimeout(() => { window.location.href = 'relatar-vulnerabilidade.html'; }, 1500);
+    setTimeout(() => { window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/test/Solucao/index.html'; }, 1500);
   }
-
   chatMessages.removeChild(loadingMessage);
   chatMessages.appendChild(botResponse);
   chatMessages.scrollTop = chatMessages.scrollHeight;
