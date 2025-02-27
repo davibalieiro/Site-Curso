@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevAcademy</title>
+    <title>Nexus</title>
     <link rel="stylesheet" href="dash.css"> <!-- Link para o seu CSS -->
     <script defer src="userDashboard.js"></script> <!-- Defer script para garantir que o DOM esteja carregado -->
 </head>
@@ -13,107 +13,150 @@
             <img src="/Site-Curso/Curso_Video/frontend/Img/LogoTipo.png" alt="Ícone da Plataforma">
         </div>
         <div>
-            <h1>DevAcademy</h1>
+            <h1>Nexus</h1>
         </div>
         <div class="navbar">
             <a href="/Site-Curso/Curso_Video/frontend/Pages/Home/Home.html">Início</a>
             <a href="/Site-Curso/Curso_Video/frontend/Pages/Coures/coures.html">Cursos</a>
-            <div class="notifications-dropdown" id="notificationsDropdown">
-                <ul class="notifications-list"></ul>
-            </div>
         </div>
-        <button id="menuToggle" class="menu-toggle">☰ Menu</button>
     </header>
-    
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <img src="/Site-Curso/Curso_Video/frontend/Img/LogoTipo.png" alt="Ícone da Plataforma">
-            <aside class="sidebar">
-                    <ul>
-                        <li><a href="#userInfo">Meu Perfil</a></li>
-                        <li><a href="#courseProgress">Meus Cursos</a></li>
-                        <li><a href="#notifications">Notificações</a></li>
-                        <li><a href="#achievements">Conquistas</a></li>
-                    </ul>
-        </div>
-    </aside>
 
-    <div id="content">
-        <div id="userInfo">
-            <section class="account-info">
-                <h2>Meu Perfil</h2>
-                <div class="user-details">
-                    <p><strong>Nome:</strong> <span id="userName"></span></p>
-                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
-                    <p><strong>Data de Cadastro:</strong> <span id="userSignupDate"></span></p>
-                    <button id="editProfileBtn">Editar Perfil</button>
+    <main>
+        <section id="profile" class="profile">
+            <div class="card">
+                <h2>Perfil do Usuário</h2>
+                <div class="profile-info">
+                    <img src="/Site-Curso/Curso_Video/frontend/Img/profile-placeholder.png" alt="Foto do Usuário" class="profile-img" id="profileImg">
+                    <input type="file" id="profileImgInput" class="hidden">
+                    <button id="editProfileBtn" class="btn">Editar Perfil</button>
                 </div>
-            </section>
-        </div>
-
-        <div class="section" id="courseProgressSection">
-            <h2 class="section-title">Progresso dos Cursos</h2>
-            <div class="section-content" id="courseProgressContent">
-                <ul class="progress-list">
-                    <li>Curso de HTML e CSS - 75% concluído</li>
-                    <li>Curso de JavaScript - 50% concluído</li>
-                    <li>Curso de React - 25% concluído</li>
-                </ul>
             </div>
-        </div>
-
-        <div class="section" id="courseHistorySection">
-            <h2 class="section-title">Histórico de Cursos</h2>
-            <div class="section-content" id="courseHistoryContent">
-                <ul class="history-list">
-                    <li>Curso de HTML e CSS - Concluído em 15/01/2025</li>
-                    <li>Curso de JavaScript - Concluído em 20/01/2025</li>
-                    <li>Curso de React - Concluído em 10/02/2025</li>
-                </ul>
+            <div class="card profile-card">
+                <div class="profile-details">
+                    <p><strong>Nome:</strong> <span id="profileName">João Silva</span></p>
+                    <input type="text" id="editName" class="hidden">
+                </div>
             </div>
-        </div>
-
-        <div class="section" id="courseFeedbackSection">
-            <h2 class="section-title">Avalie os Cursos</h2>
-            <div class="section-content" id="courseFeedbackContent">
-                <ul class="feedback-list">
-                    <li>Curso de HTML e CSS - Avaliação: 4 estrelas - Comentário: "Ótimo curso!"</li>
-                    <li>Curso de JavaScript - Avaliação: 5 estrelas - Comentário: "Muito bom, recomendo!"</li>
-                    <li>Curso de React - Avaliação: 3 estrelas - Comentário: "Bom, mas pode melhorar."</li>
-                </ul>
+            <div class="card profile-card">
+                <div class="profile-details">
+                    <p><strong>Email:</strong> <span id="profileEmail">joao.silva@example.com</span></p>
+                    <input type="email" id="editEmail" class="hidden">
+                </div>
             </div>
-        </div>
-
-        <div class="section" id="projectsSection">
-            <h2 class="section-title">Projetos</h2>
-            <div class="section-content" id="projectsContent">
-                <ul class="projects-list">
-                    <li>Projeto Angular - Aplicação web desenvolvida com Angular.</li>
-                    <li>Projeto MongoDB - Banco de dados NoSQL utilizando MongoDB.</li>
-                    <li>Projeto Java - Aplicação backend desenvolvida com Java.</li>
-                </ul>
+            <div class="card profile-card">
+                <div class="profile-details">
+                    <p><strong>Data de Cadastro:</strong> <span id="profileSignupDate">01/01/2023</span></p>
+                </div>
             </div>
-        </div>
-
-        <div class="section" id="achievementsSection">
-            <h2 class="section-title">Conquistas</h2>
-            <div class="section-content" id="achievementsContent">
-                <ul class="achievements-list">
-                    <li>Concluiu o curso de HTML e CSS</li>
-                    <li>Primeiro acesso à plataforma</li>
-                    <li>Concluiu 50% do curso de JavaScript</li>
-                </ul>
+            <div class="card profile-card">
+                <div class="profile-details">
+                    <p><strong>Biografia:</strong></p>
+                    <textarea id="profileBio" readonly>Desenvolvedor web apaixonado por tecnologia e inovação.</textarea>
+                    <textarea id="editBio" class="hidden"></textarea>
+                </div>
             </div>
-        </div>
-    </div>
+            <div class="card hidden" id="editButtons">
+                <button id="saveProfileBtn" class="btn">Salvar</button>
+                <button id="cancelEditBtn" class="btn">Cancelar</button>
+            </div>
+        </section>
+
+        <section id="courses" class="courses">
+            <div class="card">
+                <h2>Meus Cursos</h2>
+                <div class="course-list">
+                    <div class="course-item">
+                        <h3>Curso de JavaScript</h3>
+                        <p>Concluído em: 15/01/2023</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="course-item">
+                        <h3>Curso de CSS Avançado</h3>
+                        <p>Concluído em: 10/02/2023</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="achievements">
+            <div class="card">
+                <h2>Conquistas</h2>
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <h3>Medalha de Ouro</h3>
+                        <p>Concedida por completar 10 cursos.</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>Certificado de Excelência</h3>
+                        <p>Concedido por obter nota máxima em todos os cursos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="notifications" class="notifications">
+            <div class="card">
+                <h2>Notificações</h2>
+                <div class="notification-list">
+                    <div class="notification-item">
+                        <p>Nova atualização disponível para o curso de React.</p>
+                    </div>
+                    <div class="notification-item">
+                        <p>Seu amigo Maria começou um novo curso: Node.js.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <div class="card">
+                <h2>Avaliações</h2>
+                <div class="review-list">
+                    <div class="review-item">
+                        <h3>Curso de JavaScript</h3>
+                        <p>Avaliação: ⭐⭐⭐⭐⭐</p>
+                        <p>Comentário: Ótimo curso, muito didático!</p>
+                    </div>
+                    <div class="review-item">
+                        <h3>Curso de CSS Avançado</h3>
+                        <p>Avaliação: ⭐⭐⭐⭐</p>
+                        <p>Comentário: Muito bom, mas poderia ter mais exemplos práticos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <div class="card">
+                <h2>Experiência</h2>
+                <div class="experience-bar">
+                    <div class="progress-bar" id="progressBar" style="width: 70%"></div>
+                </div>
+                <p>Nível de Experiência: Intermediário</p>
+            </div>
+        </section>
+
+        <section id="social" class="social">
+            <div class="card">
+                <h2>Integração Social</h2>
+                <div class="social-list">
+                    <div class="social-item">
+                        <p>Amigo: Maria Oliveira</p>
+                    </div>
+                    <div class="social-item">
+                        <p>Amigo: Carlos Santos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="footer-links">
-            <a href="#">Sobre</a>
-            <a href="#">Suporte</a>
-            <a href="#">Termos de Uso</a>
-            <a href="#">Privacidade</a>
-        </div>
         <p>&copy; 2025 Plataforma de Cursos - Todos os direitos reservados</p>
     </footer>
 </body>

@@ -1,171 +1,118 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    const API_URL = 'http://localhost:3000';
-    const userNameElement = document.getElementById('userName');
-    const userEmailElement = document.getElementById('userEmail');
-    const userSignupDateElement = document.getElementById('userSignupDate');
-    const notificationsIcon = document.getElementById('notificationsIcon');
-    const notificationsDropdown = document.getElementById('notificationsDropdown');
-    
-    let user = JSON.parse(localStorage.getItem('user'));
-    let token = localStorage.getItem('token');
-    
-    if (!user || !token) {
-        window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/Auth/LoginRegister.html';
-        return;
-    } else {
-        try {
-            const response = await fetch(`${API_URL}/protected`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to authenticate');
-            }
-
-            const data = await response.json();
-            user = data.user;
-            localStorage.setItem('user', JSON.stringify(user));
-            userNameElement.textContent = user.name;
-            userEmailElement.textContent = user.email;
-            userSignupDateElement.textContent = new Date(user.signup_date || new Date()).toLocaleDateString('pt-BR');
-        } catch (error) {
-            console.error('Erro ao buscar dados do usuário:', error);
-            window.location.href = '/Site-Curso/Curso_Video/frontend/Pages/Auth/LoginRegister.html';
-            return;
-        }
-    }
-
-    const userData = {
-        progress: [
-            { course: "Curso de HTML e CSS", progress: 75 },
-            { course: "Curso de JavaScript", progress: 50 },
-            { course: "Curso de React", progress: 25 }
-        ],
-        history: [
-            { course: "Curso de HTML e CSS", date: "2025-01-15" },
-            { course: "Curso de JavaScript", date: "2025-01-20" },
-            { course: "Curso de React", date: "2025-02-10" }
-        ],
-        feedback: [
-            { course: "Curso de HTML e CSS", rating: 4, comment: "Ótimo curso!" },
-            { course: "Curso de JavaScript", rating: 5, comment: "Muito bom, recomendo!" },
-            { course: "Curso de React", rating: 3, comment: "Bom, mas pode melhorar." }
-        ],
-        notifications: [
-            "Bem-vindo ao DevAcademy!",
-            "Novo curso disponível: Node.js",
-            "Sua assinatura foi renovada com sucesso."
-        ],
-        achievements: [
-            "Concluiu o curso de HTML e CSS",
-            "Primeiro acesso à plataforma",
-            "Concluiu 50% do curso de JavaScript"
-        ]
+document.addEventListener('DOMContentLoaded', () => {
+    const user = JSON.parse(localStorage.getItem('user')) || {
+        name: 'João Silva',
+        email: 'joao.silva@example.com',
+        bio: 'Desenvolvedor web apaixonado por tecnologia e inovação.',
+        signup_date: '2023-01-01'
     };
 
-    // Preencher progresso dos cursos
-    const progressList = document.querySelector(".progress-list");
-    if (progressList) {
-        progressList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
-        userData.progress.forEach(item => {
-            const progressItem = document.createElement("li");
-            progressItem.classList.add("progress-item");
-            progressItem.innerHTML = `
-                <h3>${item.course}</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: ${item.progress}%;"></div>
+    // Elementos do DOM
+    const profileName = document.getElementById('profileName');
+    const profileEmail = document.getElementById('profileEmail');
+    const profileBio = document.getElementById('profileBio');
+    const profileSignupDate = document.getElementById('profileSignupDate');
+    const profileImg = document.getElementById('profileImg');
+    const profileImgInput = document.getElementById('profileImgInput');
+    const editProfileBtn = document.getElementById('editProfileBtn');
+    const saveProfileBtn = document.getElementById('saveProfileBtn');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+    const editButtons = document.getElementById('editButtons');
+    const editName = document.getElementById('editName');
+    const editEmail = document.getElementById('editEmail');
+    const editBio = document.getElementById('editBio');
+    const profileEditForm = document.createElement('div');
+    profileEditForm.classList.add('profile-edit-form');
+
+    // Adiciona o formulário de edição ao DOM
+    const profileSection = document.getElementById('profile');
+    profileSection.appendChild(profileEditForm);
+
+    // Preenche os dados do usuário
+    profileName.textContent = user.name;
+    profileEmail.textContent = user.email;
+    const signupDate = new Date(user.signup_date);
+    profileSignupDate.textContent = signupDate.toLocaleDateString('pt-BR');
+    profileBio.textContent = user.bio;
+
+    // Função para alternar entre modo de visualização e edição
+    const toggleEditMode = (isEditing) => {
+        if (isEditing) {
+            // Preenche os campos de edição com os dados atuais
+            editName.value = user.name;
+            editEmail.value = user.email;
+            editBio.value = user.bio;
+
+            // Esconde os elementos de visualização
+            document.querySelectorAll('.profile-details p').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.profile-details textarea').forEach(textarea => textarea.classList.add('hidden'));
+
+            // Mostra o formulário de edição
+            profileEditForm.innerHTML = `
+                <input type="text" id="editName" placeholder="Nome" value="${user.name}">
+                <input type="email" id="editEmail" placeholder="Email" value="${user.email}">
+                <textarea id="editBio" placeholder="Biografia">${user.bio}</textarea>
+                <div class="edit-buttons">
+                    <button id="saveProfileBtn" class="btn">Salvar</button>
+                    <button id="cancelEditBtn" class="btn">Cancelar</button>
                 </div>
-                <p>${item.progress}% concluído</p>
             `;
-            progressList.appendChild(progressItem);
-        });
-    }
+            profileEditForm.classList.add('visible');
 
-    // Preencher histórico dos cursos
-    const historyList = document.querySelector(".history-list");
-    if (historyList) {
-        historyList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
-        userData.history.forEach(item => {
-            const historyItem = document.createElement("li");
-            historyItem.classList.add("history-item");
-            historyItem.innerHTML = `
-                <p><strong>Curso:</strong> ${item.course}</p>
-                <p><strong>Data:</strong> ${new Date(item.date).toLocaleDateString()}</p>
-            `;
-            historyList.appendChild(historyItem);
-        });
-    }
+            // Adiciona eventos aos novos botões
+            document.getElementById('saveProfileBtn').addEventListener('click', saveProfile);
+            document.getElementById('cancelEditBtn').addEventListener('click', cancelEdit);
+        } else {
+            // Volta para o modo de visualização
+            document.querySelectorAll('.profile-details p').forEach(p => p.classList.remove('hidden'));
+            document.querySelectorAll('.profile-details textarea').forEach(textarea => textarea.classList.remove('hidden'));
+            profileEditForm.classList.remove('visible');
+        }
+    };
 
-    // Preencher feedback dos cursos
-    const feedbackList = document.querySelector(".feedback-list");
-    if (feedbackList) {
-        feedbackList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
-        userData.feedback.forEach(item => {
-            const feedbackItem = document.createElement("li");
-            feedbackItem.classList.add("feedback-item");
-            feedbackItem.innerHTML = `
-                <p><strong>Curso:</strong> ${item.course}</p>
-                <div class="rating">
-                    ${[...Array(5)].map((_, i) => `
-                        <input type="radio" ${i + 1 <= item.rating ? 'checked' : ''} disabled>
-                        <label>⭐</label>
-                    `).join('')}
-                </div>
-                <p><strong>Comentário:</strong> ${item.comment}</p>
-            `;
-            feedbackList.appendChild(feedbackItem);
-        });
-    }
+    // Função para salvar as alterações
+    const saveProfile = () => {
+        user.name = editName.value;
+        user.email = editEmail.value;
+        user.bio = editBio.value;
 
-    // Preencher notificações
-    const notificationsList = document.querySelector(".notifications-list");
-    notificationsList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
-    userData.notifications.forEach(notification => {
-        const li = document.createElement("li");
-        li.classList.add("notification-item");
-        li.innerHTML = `<p>${notification}</p>`;
-        notificationsList.appendChild(li);
+        localStorage.setItem('user', JSON.stringify(user));
+
+        profileName.textContent = user.name;
+        profileEmail.textContent = user.email;
+        profileBio.textContent = user.bio;
+
+        toggleEditMode(false);
+    };
+
+    // Função para cancelar a edição
+    const cancelEdit = () => {
+        toggleEditMode(false);
+    };
+
+    // Evento para editar o perfil
+    editProfileBtn.addEventListener('click', () => {
+        toggleEditMode(true);
     });
 
-    // Preencher conquistas
-    const achievementsList = document.querySelector(".achievements-list");
-    if (achievementsList) {
-        achievementsList.innerHTML = ""; // Limpa a lista antes de adicionar os itens
-        userData.achievements.forEach(achievement => {
-            const li = document.createElement("li");
-            li.classList.add("achievement-item");
-            li.innerHTML = `<p>${achievement}</p>`;
-            achievementsList.appendChild(li);
-        });
-    }
+    // Evento para alterar a foto do perfil
+    profileImg.addEventListener('click', () => {
+        profileImgInput.click();
+    });
 
-    // Evento de clique no botão "Editar Perfil"
-    const editProfileBtn = document.getElementById("editProfileBtn");
-    editProfileBtn.addEventListener("click", function() {
-        const newName = prompt("Digite o novo nome:", user.name);
-        const newEmail = prompt("Digite o novo email:", user.email);
-        if (newName && newEmail) {
-            user.name = newName;
-            user.email = newEmail;
-            localStorage.setItem('user', JSON.stringify(user));
-            document.getElementById('userName').textContent = user.name;
-            document.getElementById('userEmail').textContent = user.email;
+    profileImgInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                profileImg.src = e.target.result;
+                localStorage.setItem('profileImg', e.target.result);
+            };
+            reader.readAsDataURL(file);
         }
     });
 
-    // Evento de clique no botão de menu para mostrar/ocultar o menu lateral
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebar = document.querySelector(".sidebar");
-    const content = document.getElementById("content");
-    menuToggle.addEventListener("click", function() {
-        sidebar.classList.toggle("show");
-        content.classList.toggle("sidebar-open");
-    });
-
-    // Evento de clique no ícone de notificações para mostrar/ocultar o dropdown
-    document.getElementById('notificationsIcon').addEventListener('click', () => {
-        document.getElementById('notificationsDropdown').classList.toggle('show');
-    });
+    // Carrega a foto do perfil salva
+    if (localStorage.getItem('profileImg')) {
+        profileImg.src = localStorage.getItem('profileImg');
+    }
 });

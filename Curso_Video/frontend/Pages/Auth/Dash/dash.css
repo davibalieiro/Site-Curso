@@ -1,31 +1,31 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos do corpo */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #F7F7F7;
     color: #021B33;
-    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
 }
 
-/* Estilos do cabeçalho */
 header {
-    background-color: #021B33;
-    color: white;
-    padding: 20px 50px;
+    background: linear-gradient(135deg, #021b33, #12577b);
+    color: #fff;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     font-size: 36px;
     margin-left: 10px;
+    font-weight: 700;
 }
 
 header .logo img {
@@ -37,375 +37,223 @@ header .logo img {
 
 .navbar {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 16px;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .navbar a:hover {
     color: #A9CFE5;
 }
 
-.notifications-icon {
-    position: relative;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-.notifications-icon img {
-    width: 24px;
-    height: 24px;
-}
-
-.notifications-dropdown {
-    display: none;
-    position: absolute;
-    top: 30px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.notifications-list {
-    list-style: none;
-    padding: 10px;
-    margin: 0;
-}
-
-.notifications-list li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.notifications-list li:last-child {
-    border-bottom: none;
-}
-
-.notifications-list li p {
-    margin: 0;
-}
-
-/* Estilos do botão de menu */
-.menu-toggle {
-    background-color: #12577B;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-.menu-toggle:hover {
-    background-color: #A9CFE5;
-}
-
-/* Estilos do rodapé */
-footer {
-    background-color: #021B33;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer .footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer .footer-links a:hover {
-    color: #A9CFE5;
-}
-
-/* Estilos das seções */
-.section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+main {
     margin: 20px;
-}
-
-.section h2 {
-    color: #021B33;
-}
-
-.section-content {
-    margin-top: 20px;
-}
-
-/* Estilos da seção de progresso */
-.progress-list {
-    list-style: none;
-    padding: 0;
-}
-
-.progress-item {
-    margin-bottom: 20px;
-}
-
-.progress-item h3 {
-    color: #021B33;
-    margin-bottom: 10px;
-}
-
-.progress-bar {
-    background-color: #E5E5E5;
-    border-radius: 10px;
-    height: 10px;
-    overflow: hidden;
-}
-
-.progress {
-    background-color: #12577B;
-    height: 100%;
-    border-radius: 10px;
-    transition: width 0.3s ease;
-}
-
-.progress-item p {
-    color: #666;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-/* Estilos da seção de histórico */
-.history-list {
-    list-style: none;
-    padding: 0;
-}
-
-.history-item {
-    background-color: #E5E5E5;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #021B33;
-}
-
-.history-item p {
-    margin: 0;
-}
-
-/* Estilos da seção de feedback */
-.feedback-list {
-    list-style: none;
-    padding: 0;
-}
-
-.feedback-item {
-    background-color: #E5E5E5;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #021B33;
-}
-
-.feedback-item p {
-    margin: 0;
-}
-
-.rating {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    text-align: center;
+    color: #12577b;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
-.rating input {
-    display: none;
-}
-
-.rating label {
-    font-size: 20px;
-    color: #ccc;
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     cursor: pointer;
+    border: 4px solid #12577b;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.rating input:checked ~ label,
-.rating input:checked ~ label ~ label {
-    color: #f5b301;
+.profile-img:hover {
+    transform: scale(1.05);
+    border-color: #021b33;
 }
 
-/* Estilos da seção de conquistas */
-.achievements-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-
-.achievements-section h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-}
-
-.achievements-list {
-    list-style: none;
-    padding: 0;
-}
-
-.achievement-item {
-    background-color: #E5E5E5;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #021B33;
-}
-
-.achievement-item p {
-    margin: 0;
-}
-
-.achievement-details {
-    background-color: #F7F7F7;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.achievement-details p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #021B33;
-}
-
-/* Estilos da seção de projetos */
-.projects-list {
-    list-style: none;
-    padding: 0;
-}
-
-.project-item {
-    background-color: #E5E5E5;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #021B33;
-}
-
-.project-item h3 {
-    margin-bottom: 5px;
-}
-
-.project-item p {
-    margin: 0;
-}
-
-/* Estilos do menu lateral fixo */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -200px;
-    width: 200px;
-    height: 100%;
-    background-color: #021B33;
-    color: white;
-    padding-top: 60px;
-    transition: left 0.3s;
-    z-index: 10;
-}
-
-.sidebar-logo {
+.profile-details {
     text-align: center;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
-.sidebar-logo img {
-    width: 100px;
-    height: 100px;
+.profile-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
 }
 
-.sidebar.show {
-    left: 0;
-}
-
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar nav ul li {
-    margin-bottom: 20px;
-}
-
-.sidebar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
+.profile-details textarea {
+    width: 100%;
     padding: 10px;
-}
-
-.sidebar nav ul li a:hover {
-    background-color: #12577B;
-}
-
-/* Ajustes para o conteúdo quando o menu está aberto */
-#content {
-    margin-left: 0;
-    transition: margin-left 0.3s;
-}
-
-.sidebar.show + #content {
-    margin-left: 200px;
-}
-
-/* Estilos adicionais para seções clicáveis */
-.expanded .section-content {
-    display: block;
-}
-
-/* Estilos da seção de informações da conta */
-.account-info {
-    background-color: white;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.account-info h2 {
-    color: #021B33;
-    margin-bottom: 15px;
-    flex-basis: 100%;
-}
-
-.user-details {
-    flex-basis: 100%;
-}
-
-.user-details p {
-    color: #666;
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-.user-details button {
-    background-color: #12577B;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
+    font-size: 14px;
+    resize: vertical;
     margin-top: 10px;
 }
 
-.user-details button:hover {
-    background-color: #A9CFE5;
+.hidden {
+    display: none;
+}
+
+.btn {
+    background-color: #021b33;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #12577b;
+}
+
+.course-list, .achievement-list, .notification-list, .review-list, .social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-item, .achievement-item, .notification-item, .review-item, .social-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-item:hover, .achievement-item:hover, .notification-item:hover, .review-item:hover, .social-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 25px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4caf50;
+    border-radius: 25px;
+    transition: width 0.5s ease;
+}
+
+/* Estilos para a edição de perfil */
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.profile-edit-form.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-edit-form input,
+.profile-edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.profile-edit-form input:focus,
+.profile-edit-form textarea:focus {
+    border-color: #12577b;
+    outline: none;
+}
+
+.profile-edit-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.edit-buttons .btn {
+    flex: 1;
+    text-align: center;
+}
+
+/* Efeito de transição para os campos de edição */
+.profile-details p,
+.profile-details textarea {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.profile-details p.hidden,
+.profile-details textarea.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+footer {
+    background-color: #021b33;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
 }
